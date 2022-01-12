@@ -1,0 +1,14 @@
+.profile-wrapper { padding: 100px; box-sizing: border-box; width: 100%}
+
+h1 {
+    font-family: Roboto;
+    font-weight: 500;
+    font-size: 48px;
+    line-height: 24px;
+    margin: 0
+}
+h1 span { color: #FF0101}
+
+.profile-content { width: 100%; display: flex; justify-content: space-between; margin-top: 77px}
+.graph-wrapper {width:70%; height: 500px; background-color: aliceblue;}
+.stats-wrapper { width:25%; height: 500px; background-color: beige;}
