@@ -98,10 +98,10 @@ class BarChartTest extends React.Component {
                 <CartesianGrid strokeDasharray="2" />
                 <XAxis dataKey="name" tickLine={false}  />
                 <YAxis orientation="right" tickLine={false}  />
-                <Tooltip content={<CustomTooltip />}/>
+                <Tooltip content={<CustomTooltip />} cursor={{ fill: "#C4C4C4", fillOpacity: 0.5 }}/>
                 <Legend iconType="circle" layout="horizontal" verticalAlign="top" align="right"/>
-                <Bar dataKey="poids" fill="#020203" />
-                <Bar dataKey="calories" fill="#ff0101" />
+                <Bar dataKey="poids" fill="#020203" barSize={7} radius={[3, 3, 0, 0]} />
+                <Bar dataKey="calories" fill="#ff0101" barSize={7} radius={[3, 3, 0, 0]} />
                 </BarChart>
             </ResponsiveContainer>
         )

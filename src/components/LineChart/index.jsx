@@ -58,7 +58,7 @@ class LineChartTest extends React.Component {
                 <XAxis dataKey="name" tickLine={false} tick={{ fill: 'white' }} fillOpacity="0.5" />
                 <Tooltip stroke="#ffff" />
                 <Legend iconSize="0" layout="horizontal" verticalAlign="top" align="left" />
-                <Line  type="monotone" dataKey="minutes" stroke="url(#linear)" activeDot={{ r: 3 }} dot={false} strokeWidth={2} name="Durée moyenne des sessions"/>
+                <Line activeDot={{ fill: "#ffff",  r: 3 }}  type="monotone" dataKey="minutes" stroke="url(#linear)" dot={false} strokeWidth={2} name="Durée moyenne des sessions"/>
                 </LineChart>
             </ResponsiveContainer>
         )
