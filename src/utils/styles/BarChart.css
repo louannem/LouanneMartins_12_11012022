@@ -1,0 +1,13 @@
+.recharts-cartesian-axis-line, .recharts-cartesian-grid-vertical { display: none;}
+.recharts-cartesian-axis-ticks g { margin-left: 43px}
+
+.recharts-tooltip-wrapper { 
+    width: 39px;
+    height: 63px;
+    background-color: #ff0101;
+    text-align: center;
+    color: white;
+    font-weight: 500;
+    font-size: 7px;
+    line-height: 24px;
+}

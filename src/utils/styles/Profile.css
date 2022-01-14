@@ -10,5 +10,9 @@ h1 {
 h1 span { color: #FF0101}
 
 .profile-content { width: 100%; display: flex; justify-content: space-between; margin-top: 77px}
-.graph-wrapper {width:70%; height: 500px; background-color: aliceblue;}
+.graph-wrapper {width:70%; height: 613px; }
+.barchart-wrapper { height: 320px; background-color: #FBFBFB; border-radius: 5px;}
+.other-graphs { height: 263px; margin-top: 30px}
 .stats-wrapper { width:25%; height: 500px; background-color: beige;}
+
+.linechart-wrapper { width: 258px; height: 263px; background: red; border-radius: 5px;}

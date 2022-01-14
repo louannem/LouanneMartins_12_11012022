@@ -1,5 +1,7 @@
 import React from "react"
 import "../../utils/styles/Profile.css"
+import BarChartTest from "../BarChart"
+import LineChartTest from "../LineChart"
 
 class Profile extends React.Component {
     render() {
@@ -12,7 +14,18 @@ class Profile extends React.Component {
                 </div>
 
                 <div className="profile-content">
-                    <div className="graph-wrapper"></div>
+                    <div className="graph-wrapper">
+                        <div className="barchart-wrapper">
+                        <BarChartTest/>
+                        </div>
+                        
+                        <div className="other-graphs">
+                            <div className="linechart-wrapper">
+                                <LineChartTest/>
+                            </div>
+                            
+                        </div>
+                    </div>
                     <div className="stats-wrapper"></div>
                 </div>
             </div>
