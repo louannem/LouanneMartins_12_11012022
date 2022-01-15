@@ -42,8 +42,8 @@ class SimplePieChart extends React.Component {
         return(
             <ResponsiveContainer width="100%" height="100%">
                 <PieChart>
-                <Pie label={<CustomTitle/>} isAnimationActive={false} data={pieFill} dataKey="value" cx="50%" cy="50%" outerRadius={79} fill="#ffff"  />
-                    <Pie startAngle={90} data={data} dataKey="value" cx="50%" cy="50%" innerRadius={80} fill="#FF0000" cornerRadius={40}>
+                <Pie label={<CustomTitle/>} isAnimationActive={false} data={pieFill} dataKey="value" cx="50%" cy="50%" outerRadius={84} fill="#ffff"  />
+                    <Pie startAngle={90} data={data} dataKey="value" cx="50%" cy="50%" innerRadius={85} fill="#FF0000" cornerRadius={40}>
                     <Label  position="center" 
                         content={<CustomLabel value1={data[0].value + "%"} value2="de votre objectif"/>}>
                     </Label>

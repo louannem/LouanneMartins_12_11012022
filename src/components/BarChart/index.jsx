@@ -69,7 +69,7 @@ const data = [
   const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
         return (
-          <div className="custom-tooltip">
+          <div className="custom-barchart-tooltip">
             <p className="poids">{`${payload[0].value}`}Kg</p>
             <p className='calories'>{`${payload[1].value}`}Kcal</p>
           </div>
@@ -84,17 +84,7 @@ class BarChartTest extends React.Component {
     render() {
         return(
             <ResponsiveContainer width="100%" height="100%">
-                <BarChart
-                width={500}
-                height={300}
-                data={data}
-                margin={{
-                    top: 5,
-                    right: 30,
-                    left: 20,
-                    bottom: 5,
-                }}
-                >
+                <BarChart width={500} height={300} data={data} margin={{ top: 25, right: 30, left: 40, bottom: 5, }} >
                 <CartesianGrid strokeDasharray="2" />
                 <XAxis dataKey="name" tickLine={false}  />
                 <YAxis orientation="right" tickLine={false}  />
