@@ -2,6 +2,8 @@ import React from "react"
 import "../../utils/styles/Profile.css"
 import BarChartTest from "../BarChart"
 import LineChartTest from "../LineChart"
+import UserRadarChart from "../RadarChart"
+import SimplePieChart from "../PieChart"
 
 class Profile extends React.Component {
     render() {
@@ -22,6 +24,14 @@ class Profile extends React.Component {
                         <div className="other-graphs">
                             <div className="linechart-wrapper">
                                 <LineChartTest/>
+                            </div>
+
+                            <div className="radarchart-wrapper">
+                                <UserRadarChart/>
+                            </div>
+
+                            <div className="piechart-wrapper">
+                                <SimplePieChart/>
                             </div>
                             
                         </div>
