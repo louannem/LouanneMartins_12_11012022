@@ -1,6 +1,8 @@
 .recharts-cartesian-axis-line, .recharts-cartesian-grid-vertical { display: none;}
 .recharts-cartesian-axis-ticks g { margin-left: 43px}
 
+.barchart-wrapper .recharts-legend-item-text { color: #74798C!important; font-weight: 500; font-size: 14px;} 
+
 .custom-barchart-tooltip { 
     display: flex;
     flex-direction: column;

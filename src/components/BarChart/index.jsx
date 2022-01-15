@@ -1,5 +1,5 @@
-import React, { PureComponent } from 'react';
-import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import React from 'react';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import "../../utils/styles/BarChart.css"
 
 const data = [
@@ -63,10 +63,16 @@ const data = [
         calories: 300,
         amt: 2100,
       },
-  ];
+  ]
+
+  function CustomTitle() {
+    return (          
+          <text x={110} y={40} dy={0} fill="#20253A" fontWeight={600} fontSize={15} textAnchor="middle">Activité quotidienne</text>
+    )
+  }
 
 
-  const CustomTooltip = ({ active, payload, label }) => {
+  const CustomTooltip = ({ active, payload }) => {
     if (active && payload && payload.length) {
         return (
           <div className="custom-barchart-tooltip">
@@ -84,14 +90,14 @@ class BarChartTest extends React.Component {
     render() {
         return(
             <ResponsiveContainer width="100%" height="100%">
-                <BarChart width={500} height={300} data={data} margin={{ top: 25, right: 30, left: 40, bottom: 5, }} >
+                <BarChart  width={500} height={300} data={data} margin={{ top: 45, right: 30, left: 40, bottom: 5, }} >
                 <CartesianGrid strokeDasharray="2" />
                 <XAxis dataKey="name" tickLine={false}  />
                 <YAxis orientation="right" tickLine={false}  />
                 <Tooltip content={<CustomTooltip />} cursor={{ fill: "#C4C4C4", fillOpacity: 0.5 }}/>
-                <Legend iconType="circle" layout="horizontal" verticalAlign="top" align="right"/>
-                <Bar dataKey="poids" fill="#020203" barSize={7} radius={[3, 3, 0, 0]} />
-                <Bar dataKey="calories" fill="#ff0101" barSize={7} radius={[3, 3, 0, 0]} />
+                <Legend iconType="circle" layout="horizontal" verticalAlign="top" align="right" wrapperStyle={{ marginTop: "-20px", color: "#74798C"}} />
+                <Bar name="Poids (kg)" label={<CustomTitle/>}  dataKey="poids" fill="#020203" barSize={7} radius={[3, 3, 0, 0]} />
+                <Bar name="Calories brûlées (kCal)" dataKey="calories" fill="#ff0101" barSize={7} radius={[3, 3, 0, 0]} />
                 </BarChart>
             </ResponsiveContainer>
         )
