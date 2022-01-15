@@ -4,7 +4,7 @@ import BarChartTest from "../BarChart"
 import LineChartTest from "../LineChart"
 import UserRadarChart from "../RadarChart"
 import SimplePieChart from "../PieChart"
-import Sidebar from "../Sidebar"
+import Card from "../Sidebar"
 import CaloriesIcon from "../../assets/stats/calories-icon.svg"
 import ProteinIcon from "../../assets/stats/protein-icon.svg"
 import CarbsIcon from "../../assets/stats/carbs-icon.svg"
@@ -42,10 +42,10 @@ class Profile extends React.Component {
                         </div>
                     </div>
                     <div className="stats-wrapper">
-                        <Sidebar img={CaloriesIcon} value="1,930kCal" type="Calories" />
-                        <Sidebar img={ProteinIcon} value="155g" type="Proteines" />
-                        <Sidebar img={CarbsIcon} value="290g" type="Glucides" />
-                        <Sidebar img={FatIcon} value="50g" type="Lipides" />
+                        <Card img={CaloriesIcon} value="1,930kCal" type="Calories" />
+                        <Card img={ProteinIcon} value="155g" type="Proteines" />
+                        <Card img={CarbsIcon} value="290g" type="Glucides" />
+                        <Card img={FatIcon} value="50g" type="Lipides" />
                     </div>
                 </div>
             </div>

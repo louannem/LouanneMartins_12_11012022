@@ -1,7 +1,7 @@
 import React from "react";
 import "../../utils/styles/Sidebar.css"
 
-class Sidebar extends React.Component {
+class Card extends React.Component {
     render() {
         return(
             <div className="sidebar-block">
@@ -15,4 +15,4 @@ class Sidebar extends React.Component {
     }
 }
 
-export default Sidebar
+export default Card
