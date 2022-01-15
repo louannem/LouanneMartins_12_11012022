@@ -90,12 +90,12 @@ class BarChartTest extends React.Component {
     render() {
         return(
             <ResponsiveContainer width="100%" height="100%">
-                <BarChart  width={500} height={300} data={data} margin={{ top: 45, right: 30, left: 40, bottom: 5, }} >
+                <BarChart data={data} margin={{ top: 45, right: 30, left: 40, bottom: 10, }} >
                 <CartesianGrid strokeDasharray="2" />
-                <XAxis dataKey="name" tickLine={false}  />
-                <YAxis orientation="right" tickLine={false}  />
+                <XAxis dataKey="name" tickLine={false} tick={{fontSize: "14px"}} dy={5} />
+                <YAxis orientation="right" tickLine={false} tick={{fontSize: "14px"}}  />
                 <Tooltip content={<CustomTooltip />} cursor={{ fill: "#C4C4C4", fillOpacity: 0.5 }}/>
-                <Legend iconType="circle" layout="horizontal" verticalAlign="top" align="right" wrapperStyle={{ marginTop: "-20px", color: "#74798C"}} />
+                <Legend iconType="circle" layout="horizontal" verticalAlign="top" align="right" wrapperStyle={{ marginTop: "-20px", marginRight:"20px", color: "#74798C"}} />
                 <Bar name="Poids (kg)" label={<CustomTitle/>}  dataKey="poids" fill="#020203" barSize={7} radius={[3, 3, 0, 0]} />
                 <Bar name="Calories brûlées (kCal)" dataKey="calories" fill="#ff0101" barSize={7} radius={[3, 3, 0, 0]} />
                 </BarChart>
