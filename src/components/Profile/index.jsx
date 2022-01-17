@@ -1,8 +1,8 @@
 import React from "react"
 import "../../utils/styles/Profile.css"
 import { fetchUSerData } from "../../utils/service/Service.js"
-import BarChartTest from "../../BarChart"
-import LineChartTest from "../"
+import BarChartTest from "../BarChart"
+import LineChartTest from "../LineChart"
 import UserRadarChart from "../RadarChart"
 import SimpleRadialChart from "../RadialChart"
 import Card from "../Sidebar"
@@ -22,8 +22,6 @@ class Profile extends React.Component {
             carbo:'',
             lipides:'',
         }
-
-
       }      
 
     async componentDidMount(){ 
