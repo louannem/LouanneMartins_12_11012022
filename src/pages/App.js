@@ -9,7 +9,6 @@ function App() {
   return (
     <div className="App">
         <Header logo={Logo} />
-
         <div className="body-wrapper">
           <Footer />
           <Profile />
