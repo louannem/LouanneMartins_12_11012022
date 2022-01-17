@@ -1,12 +1,8 @@
 import React from "react"
 import "../../utils/styles/Profile.css"
-<<<<<<< Updated upstream
-
-class Profile extends React.Component {
-=======
 import { fetchUSerData } from "../../utils/service/Service.js"
-import BarChartTest from "../BarChart"
-import LineChartTest from "../LineChart"
+import BarChartTest from "../../BarChart"
+import LineChartTest from "../"
 import UserRadarChart from "../RadarChart"
 import SimpleRadialChart from "../RadialChart"
 import Card from "../Sidebar"
@@ -43,7 +39,6 @@ class Profile extends React.Component {
     }
     
         
->>>>>>> Stashed changes
     render() {
         console.log(this.state.proteines)
         return(
@@ -55,10 +50,6 @@ class Profile extends React.Component {
                 </div>
 
                 <div className="profile-content">
-<<<<<<< Updated upstream
-                    <div className="graph-wrapper"></div>
-                    <div className="stats-wrapper"></div>
-=======
                     <div className="graph-wrapper">
                         <div className="barchart-wrapper">
                         <BarChartTest/>
@@ -85,7 +76,6 @@ class Profile extends React.Component {
                         <Card img={CarbsIcon} value={`${this.state.carbo}g`} type="Glucides" />
                         <Card img={FatIcon} value={`${this.state.lipides}g`} type="Lipides" />
                     </div>
->>>>>>> Stashed changes
                 </div>
             </div>
         )

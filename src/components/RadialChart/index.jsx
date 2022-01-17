@@ -14,7 +14,7 @@ function CustomLabel({viewBox, value1, value2}){
     const {cx, cy} = viewBox;
     return (
         <svg>
-            <circle cx="50%" cy="50%"  r="80" strokeWidth="0" fill="white" />
+            <circle cx="50%" cy="50%" r="40" r="80" strokeWidth="0" fill="white" />
             <text x={cx} y={cy-10} fill="#3d405c" className="recharts-text recharts-label" textAnchor="middle" dominantBaseline="central">
                 <tspan alignmentBaseline="middle" fontSize="26">{value1}</tspan>
                 <tspan fontSize="16" x={cx} dy="24" fill="#74798C">{value2}</tspan>
