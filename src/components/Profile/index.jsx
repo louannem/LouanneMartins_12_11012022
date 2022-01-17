@@ -3,6 +3,7 @@ import "../../utils/styles/Profile.css"
 import BarChartTest from "../BarChart"
 import LineChartTest from "../LineChart"
 import UserRadarChart from "../RadarChart"
+import SimpleRadialChart from "../RadialChart"
 import SimplePieChart from "../PieChart"
 import Card from "../Sidebar"
 import CaloriesIcon from "../../assets/stats/calories-icon.svg"
@@ -11,6 +12,7 @@ import CarbsIcon from "../../assets/stats/carbs-icon.svg"
 import FatIcon from "../../assets/stats/fat-icon.svg"
 
 class Profile extends React.Component {
+    
     render() {
         return(
             <div className="profile-wrapper">
@@ -36,7 +38,7 @@ class Profile extends React.Component {
                             </div>
 
                             <div className="piechart-wrapper">
-                                <SimplePieChart/>
+                                <SimpleRadialChart/>
                             </div>
                             
                         </div>
