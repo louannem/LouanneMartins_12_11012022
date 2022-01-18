@@ -2,14 +2,6 @@ import React from "react";
 import { RadialBarChart, RadialBar, ResponsiveContainer, PolarAngleAxis } from 'recharts';
 import { fetchUSerData } from "../../utils/service/Service";
 
-const test = [
-    {
-        subject:'score',
-        value: 12,
-        fill: '#ff0000'
-    }
-]
-
 function CustomLabel({viewBox, value1, value2}){
     const {cx, cy} = viewBox;
     return (
@@ -35,7 +27,6 @@ class SimpleRadialChart extends React.Component {
 
       async componentDidMount(){ 
         const user = await fetchUSerData()
-        console.log(user.score)
         this.setState({ 
             data:[{score: user.score*100, fill:"#ff0000"}]
         })
@@ -45,7 +36,7 @@ class SimpleRadialChart extends React.Component {
         return(
             <ResponsiveContainer width="100%" height="100%">
                 <RadialBarChart startAngle={-270} endAngle={90} cx="50%" cy="50%" innerRadius="70%" outerRadius="80%" barSize={10} data={this.state.data}>
-                    <PolarAngleAxis type="number" domain={[0, 100]} tick={true}  />
+                    <PolarAngleAxis type="number" domain={[0, 100]} tick={false}  />
                     <RadialBar cornerRadius={10} minAngle={15} label={<CustomLabel value1={this.state.data[0].score + "%"} value2="de votre objectif" />} clockWise dataKey="score" />
                 </RadialBarChart>
             </ResponsiveContainer>
