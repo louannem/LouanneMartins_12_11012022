@@ -1,4 +1,5 @@
 import React from "react";
+import propTypes from "prop-types";
 import "../../utils/styles/Sidebar.css"
 
 class Card extends React.Component {
@@ -13,6 +14,12 @@ class Card extends React.Component {
             </div>
         )
     }
+}
+
+Card.propTypes = {
+    img: propTypes.string.isRequired,
+    value: propTypes.string.isRequired,
+    type: propTypes.string.isRequired
 }
 
 export default Card

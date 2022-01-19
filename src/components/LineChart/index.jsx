@@ -1,84 +1,20 @@
 import React from 'react';
 import { LineChart, Line, XAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { LineTooltip, addLineDays } from '../../utils/ChartsCustoming';
 import { fetchSessionData } from '../../utils/service/Service';
 import "../../utils/styles/LineChart.css"
 
-const data = [
-    {
-      name: 'L',
-      minutes: 40,
-    },
-    {
-        name: 'M',
-        minutes: 25,
-      },
-      {
-        name: 'M',
-        minutes: 28,
-      },
-      {
-        name: 'J',
-        minutes: 55,
-      },
-      {
-        name: 'V',
-        minutes: 68,
-      },
-      {
-        name: 'S',
-        minutes: 30,
-      },
-      {
-        name: 'D',
-        minutes: 40,
-      },
-]
-
-/**
- * 
- * @param {*} param0 
- * @returns 
- */
-const CustomTooltip = ({ active, payload, label }) => {
-  if (active && payload && payload.length) {
-      return (
-        <div className="custom-line-chart-tooltip">
-          <p className="poids">{`${payload[0].value}`} min</p>
-        </div>
-      )
-  }
-  return null
-}
-
-
 class LineChartTest extends React.Component {
-
   constructor(props) {
     super(props);
-    this.state = {
-      sessions:[]
-    }
+    this.state = { sessions:[] }
   } 
 
   async componentDidMount(){ 
     const userSession = await fetchSessionData()
-    this.setState({
-      sessions: userSession.sessions
-    })
+    this.setState({ sessions: userSession.sessions })
   }
 
-  addDays = (day) => {
-    const daysArray = [
-      "L",
-      "M",
-      "M",
-      "J",
-      "V",
-      "S",
-      "D"
-    ]
-    return daysArray[day - 1]
-  }
     render(){
         return(
             <ResponsiveContainer width="100%" height="100%" fill="red">
@@ -90,8 +26,8 @@ class LineChartTest extends React.Component {
                           <stop offset="95%" stopColor="#ffff" stopOpacity={1}/>
                       </linearGradient>
                   </defs>
-                  <XAxis dataKey="day" tickFormatter={this.addDays} tickLine={false} tick={{ fill: 'white' }} fillOpacity="0.5" />
-                  <Tooltip stroke="#ffff"  content={<CustomTooltip />}  />
+                  <XAxis dataKey="day" tickFormatter={addLineDays} tickLine={false} tick={{ fill: 'white' }} fillOpacity="0.5" />
+                  <Tooltip stroke="#ffff"  content={<LineTooltip />}  />
                   <Legend iconSize="0" layout="horizontal" verticalAlign="top" align="left" width="150px" />
                   <Line activeDot={{ fill: "#ffff",  r: 3 }}  type="monotone" dataKey="sessionLength" stroke="url(#linear)" dot={false} strokeWidth={2} name="Durée moyenne des sessions"/>
                 </LineChart>

@@ -21,10 +21,12 @@ class UserRadarChart extends React.Component {
         } )
     }
 
+    
     /**
-     * 
-     * @param {*} kind 
-     * @returns 
+     * Adds a customized XAxis to the RadarChart based on datas with capitalized labels
+     * Needs fetched datas in current state to work
+     * @param {string} kind array element 
+     * @returns labelArray with index shifted by 1
      */
     addKind = (kind) => {
         const labelArray = []
@@ -36,6 +38,7 @@ class UserRadarChart extends React.Component {
         return  labelArray[kind - 1];
     }
     
+
     render() {   
         return(
             <ResponsiveContainer width="100%" height="100%">
