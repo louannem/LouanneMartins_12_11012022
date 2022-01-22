@@ -1,6 +1,6 @@
 import React from 'react';
 import { LineChart, Line, XAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { LineTooltip, addLineDays } from '../../utils/ChartsCustoming';
+import { LineTooltip, addLineDays } from '../../utils/chartsCustomizing';
 import { fetchSessionData } from '../../utils/service/Service';
 import "../../utils/styles/LineChart.css"
 

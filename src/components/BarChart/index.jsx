@@ -1,7 +1,7 @@
 import React from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { fetchActivityData } from '../../utils/service/Service';
-import { BarTooltip, BarCustomTitle } from '../../utils/ChartsCustoming';
+import { BarTooltip, BarCustomTitle } from '../../utils/chartsCustomizing';
 import "../../utils/styles/BarChart.css"
 
 class BarChartTest extends React.Component {

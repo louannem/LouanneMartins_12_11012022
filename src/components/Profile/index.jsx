@@ -1,4 +1,5 @@
-import React from "react"
+import React, {useContext} from "react"
+import { UserContext } from "../../UserContext"
 import "../../utils/styles/Profile.css"
 import { fetchUSerData } from "../../utils/service/Service.js"
 import BarChartTest from "../BarChart"
@@ -6,6 +7,7 @@ import LineChartTest from "../LineChart"
 import UserRadarChart from "../RadarChart"
 import SimpleRadialChart from "../RadialChart"
 import Card from "../Sidebar"
+import { Switch } from "../Switch"
 import CaloriesIcon from "../../assets/stats/calories-icon.svg"
 import ProteinIcon from "../../assets/stats/protein-icon.svg"
 import CarbsIcon from "../../assets/stats/carbs-icon.svg"
@@ -20,7 +22,7 @@ class Profile extends React.Component {
             calories:'',
             proteines:'',
             carbo:'',
-            lipides:'',
+            lipides:''
         }
       }      
 
@@ -38,6 +40,7 @@ class Profile extends React.Component {
     
         
     render() {
+        console.log(this.context.userId)
         return(
             <div className="profile-wrapper">
 
@@ -45,6 +48,8 @@ class Profile extends React.Component {
                     <h1>Bonjour <span>{this.state.name}</span></h1>
                     <h2>Félicitation ! Vous avez explosé vos objectifs hier 👏</h2>
                 </div>
+
+                <Switch />
 
                 <div className="profile-content">
                     <div className="graph-wrapper">
@@ -79,4 +84,5 @@ class Profile extends React.Component {
     }
 }
 
+Profile.contextType = UserContext
 export default Profile

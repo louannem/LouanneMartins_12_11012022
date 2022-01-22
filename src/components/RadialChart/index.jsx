@@ -1,6 +1,6 @@
 import React from "react";
 import { RadialBarChart, RadialBar, ResponsiveContainer, PolarAngleAxis } from 'recharts';
-import { RadialCustomLabel } from "../../utils/ChartsCustoming";
+import { RadialCustomLabel } from "../../utils/chartsCustomizing";
 import { fetchUSerData } from "../../utils/service/Service";
 
 class SimpleRadialChart extends React.Component {
