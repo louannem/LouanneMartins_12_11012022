@@ -1,3 +1,11 @@
+export const fetchData = (id) => {
+    return fetch(`http://localhost:3000/user/`+id)
+    .then((response) => response.json()
+    .then((user) => user.data )
+    .catch((error) => console.log(error))
+    )
+}
+
 export const fetchUSerData = () => {
    return fetch(`http://localhost:3000/user/18`)
     .then((response) => response.json()

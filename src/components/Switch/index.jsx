@@ -1,16 +1,17 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { UserContext } from "../../UserContext"
 
 
 export const Switch = () => {
-    const user = useContext(UserContext)
-    function switchUser(user) {
-        if(user.userId === "12") {
-            user.setId("18")
-        } else if (user.userId === "18") { user.setId("12")}
+    const data = useContext(UserContext)
+
+    const [checkUser, Setuser] = useState(data.userId === "18")
+
+    const handleChange = () => {
+        data.switchUser()
     }
 
     return(
-        <button onClick={() => switchUser(user)}>Changer user</button>
+        <button onClick={handleChange}>Changer user</button>
     )
 }

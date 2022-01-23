@@ -1,7 +1,7 @@
-import React, {useContext} from "react"
+import React from "react"
 import { UserContext } from "../../UserContext"
 import "../../utils/styles/Profile.css"
-import { fetchUSerData } from "../../utils/service/Service.js"
+import { fetchUSerData, fetchData } from "../../utils/service/Service.js"
 import BarChartTest from "../BarChart"
 import LineChartTest from "../LineChart"
 import UserRadarChart from "../RadarChart"
@@ -24,12 +24,21 @@ class Profile extends React.Component {
             carbo:'',
             lipides:''
         }
-      }      
+      }  
+      
+      async update() {
+          if(this.context.userId !== this.state.id) {
+            this.setState({id:this.context.userId});            
+            const data = await fetchData(this.context.userId)
+            console.log(data)
+          }
+      }
 
     async componentDidMount(){ 
         const user = await fetchUSerData()
      
         this.setState({
+            id: 18,
             name: user.userInfos.firstName,
             calories:user.keyData.calorieCount,
             proteines:user.keyData.proteinCount,
@@ -37,13 +46,15 @@ class Profile extends React.Component {
             lipides:user.keyData.lipidCount,
         } )
     }
+
+    componentDidUpdate(){
+        this.update()
+    }
     
         
     render() {
-        console.log(this.context.userId)
         return(
             <div className="profile-wrapper">
-
                 <div className="profile-title">
                     <h1>Bonjour <span>{this.state.name}</span></h1>
                     <h2>Félicitation ! Vous avez explosé vos objectifs hier 👏</h2>
