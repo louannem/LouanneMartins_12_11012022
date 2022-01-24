@@ -1,18 +1,35 @@
 import React from 'react';
 import { LineChart, Line, XAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { UserContext } from '../../UserContext';
 import { LineTooltip, addLineDays } from '../../utils/chartsCustomizing';
-import { fetchSessionData } from '../../utils/service/Service';
+import { fetchSessionData, fetchData } from '../../utils/service/Service';
 import "../../utils/styles/LineChart.css"
 
 class LineChartTest extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { sessions:[] }
+    this.state = {
+      id:18, 
+      sessions:[]
+     }
   } 
 
+  async update(data) { 
+    if(this.context.userId !== this.state.id) {
+      this.setState({id:this.context.userId});            
+      data = await fetchData(this.context.userId, '/average-sessions')
+
+      this.setState({ sessions: data.sessions })
+    }
+  }
+
   async componentDidMount(){ 
-    const userSession = await fetchSessionData()
+    const userSession = await fetchSessionData(this.state.id)
     this.setState({ sessions: userSession.sessions })
+  }
+
+  componentDidUpdate() {
+    this.update()
   }
 
     render(){
@@ -36,4 +53,5 @@ class LineChartTest extends React.Component {
     }
 }
 
+LineChartTest.contextType = UserContext
 export default LineChartTest

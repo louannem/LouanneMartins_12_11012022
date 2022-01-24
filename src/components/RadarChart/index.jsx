@@ -1,25 +1,41 @@
 import React from 'react';
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer } from 'recharts';
-import { fetchPerfData } from "../../utils/service/Service.js"
+import { UserContext } from '../../UserContext.js';
+import { fetchPerfData, fetchData } from "../../utils/service/Service.js"
 
 class UserRadarChart extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
+            id:18,
             data:[],
             kind:[],
         }
       } 
+      
+      async update() {
+        if(this.context.userId !== this.state.id) {
+            this.setState({id:this.context.userId});            
+            const userData = await fetchData(this.context.userId, '/performance')
+
+            this.setState({
+                data: userData.data
+            })
+      }
+    }
+
 
       async componentDidMount(){ 
-        const userPerf = await fetchPerfData()
+        const userPerf = await fetchData(this.state.id, '/performance')
        
         this.setState({
             data: userPerf.data,
             kind: userPerf.kind
         } )
     }
+
+    componentDidUpdate(){ this.update()}
 
     
     /**
@@ -54,4 +70,5 @@ class UserRadarChart extends React.Component {
     }
 }
 
+UserRadarChart.contextType = UserContext
 export default UserRadarChart

@@ -26,11 +26,18 @@ class Profile extends React.Component {
         }
       }  
       
-      async update() {
+      async update(data) {
           if(this.context.userId !== this.state.id) {
             this.setState({id:this.context.userId});            
-            const data = await fetchData(this.context.userId)
-            console.log(data)
+            data = await fetchData(this.context.userId,'')
+
+            this.setState({
+                name: data.userInfos.firstName,
+                calories: data.keyData.calorieCount,
+                proteines:data.keyData.proteinCount,
+                carbo: data.keyData.carbohydrateCount,
+                lipides: data.keyData.lipidCount
+            })
           }
       }
 
@@ -48,7 +55,7 @@ class Profile extends React.Component {
     }
 
     componentDidUpdate(){
-        this.update()
+        this.update()  
     }
     
         

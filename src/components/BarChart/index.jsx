@@ -1,14 +1,30 @@
 import React from 'react';
+import { UserContext } from "../../UserContext"
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { fetchActivityData } from '../../utils/service/Service';
+import { fetchActivityData, fetchData } from '../../utils/service/Service';
 import { BarTooltip, BarCustomTitle } from '../../utils/chartsCustomizing';
 import "../../utils/styles/BarChart.css"
 
 class BarChartTest extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { sessions:[] }
+    this.state = { 
+      id: 18,
+      sessions:[] 
+    }
   } 
+
+  async update(data) {
+    if(this.context.userId !== this.state.id) {
+      this.setState({id:this.context.userId});            
+      data = await fetchData(this.context.userId,'/activity')
+
+      this.setState({
+        sessions: data.sessions
+       })
+    }
+  }
+
 
   async componentDidMount(){ 
     const userActivity = await fetchActivityData()
@@ -17,6 +33,12 @@ class BarChartTest extends React.Component {
      sessions: userActivity.sessions
     })
   }
+
+  componentDidUpdate(){ 
+    this.update() 
+  }
+
+     
 
     render() {
         return(
@@ -38,4 +60,5 @@ class BarChartTest extends React.Component {
     }
 }
 
+BarChartTest.contextType = UserContext
 export default BarChartTest

@@ -1,5 +1,5 @@
-export const fetchData = (id) => {
-    return fetch(`http://localhost:3000/user/`+id)
+export const fetchData = (id, url) => {
+    return fetch(`http://localhost:3000/user/`+id+url)
     .then((response) => response.json()
     .then((user) => user.data )
     .catch((error) => console.log(error))
@@ -22,8 +22,8 @@ export const fetchPerfData = () => {
     )
 }
 
-export const fetchSessionData = () => {
-    return fetch(`http://localhost:3000/user/18/average-sessions`)
+export const fetchSessionData = (id) => {
+    return fetch(`http://localhost:3000/user/`+id+`/average-sessions`)
     .then((response) => response.json()
     .then((user) => user.data )
     .catch((error) => console.log(error))
