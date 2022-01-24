@@ -70,7 +70,7 @@ class Profile extends React.Component {
                     <h2>{this.props.secondTitle}</h2>
                 </div>
 
-                <Switch buttonText="Passer à un autre utilisateur" />
+                <Switch buttonText="Changer d'utilisateur" />
 
                 <div className="profile-content">
                     <div className="graph-wrapper">

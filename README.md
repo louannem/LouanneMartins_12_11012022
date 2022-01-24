@@ -11,9 +11,9 @@ Analytics dashboard developped with React & Recharts
 
 ## Installing and lauching the project
 1. Go to https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard and follow the instructions to install the backend API
-2. Open the API on port 3000
+2. Run the API on port 3000
 3. Clone this repository on your computer
-4. Run the app with `npm run`
+4. Run the app with `npm start`
 5. Open the app on another port than 3000
 
 ### Backend API
