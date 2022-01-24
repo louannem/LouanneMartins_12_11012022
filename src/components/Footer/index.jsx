@@ -1,3 +1,4 @@
+import propTypes from "prop-types"
 import React from "react"
 import MeditationLogo from "../../assets/sidebar/icon1.svg"
 import SwimmingLogo from "../../assets/sidebar/icon2.svg"
@@ -26,10 +27,14 @@ class Footer extends React.Component {
                         <img src={WeightIcon} alt="" />
                     </div>
                 </div>
-                <span>Copyright, SportSee 2020</span>
+                <span>{this.props.credits}</span>
             </footer>
         )
     }
+}
+
+Footer.propTypes = {
+    credits: propTypes.string.isRequired
 }
 
 export default Footer

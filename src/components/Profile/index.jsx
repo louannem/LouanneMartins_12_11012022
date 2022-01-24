@@ -14,6 +14,7 @@ import CaloriesIcon from "../../assets/stats/calories-icon.svg"
 import ProteinIcon from "../../assets/stats/protein-icon.svg"
 import CarbsIcon from "../../assets/stats/carbs-icon.svg"
 import FatIcon from "../../assets/stats/fat-icon.svg"
+import propTypes from "prop-types"
 
 class Profile extends React.Component {
 
@@ -66,10 +67,10 @@ class Profile extends React.Component {
             <div className="profile-wrapper">
                 <div className="profile-title">
                     <h1>Bonjour <span>{this.state.name}</span></h1>
-                    <h2>Félicitation ! Vous avez explosé vos objectifs hier 👏</h2>
+                    <h2>{this.props.secondTitle}</h2>
                 </div>
 
-                <Switch />
+                <Switch buttonText="Passer à un autre utilisateur" />
 
                 <div className="profile-content">
                     <div className="graph-wrapper">
@@ -105,4 +106,7 @@ class Profile extends React.Component {
 }
 
 Profile.contextType = UserContext
+Profile.protoTypes = {
+    secondTitle: propTypes.string.isRequired
+}
 export default Profile

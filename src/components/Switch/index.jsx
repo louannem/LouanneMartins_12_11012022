@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import propTypes from "prop-types";
 import { UserContext } from "../../UserContext"
 
 
@@ -6,7 +7,7 @@ import { UserContext } from "../../UserContext"
  * Switch button to change th user's id in current state
  * @returns Button
  */
-export const Switch = () => {
+export const Switch = ({buttonText}) => {
     const data = useContext(UserContext)
 
     const handleChange = () => {
@@ -14,6 +15,10 @@ export const Switch = () => {
     }
 
     return(
-        <button onClick={handleChange} className="switch-user">Passer à un autre utilisateur</button>
+        <button onClick={handleChange} className="switch-user">{buttonText}</button>
     )
+}
+
+Switch.propTypes = {
+    buttonText: propTypes.string.isRequired
 }

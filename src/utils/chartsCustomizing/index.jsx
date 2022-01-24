@@ -56,20 +56,20 @@ RadialCustomLabel.propTypes = {
  * @returns Custom content in BarChart Tootlip
  */
 export const BarTooltip = ({ active, payload }) => {
-    if (active && payload && payload.length) {
-        return (
-          <div className="custom-barchart-tooltip">
-            <p className="poids">{`${payload[0].value}`}Kg</p>
-            <p className='calories'>{`${payload[1].value}`}Kcal</p>
-          </div>
-        )
-    }
-    return null
+  if (active && payload && payload.length) {
+    return (
+      <div className="custom-barchart-tooltip">
+        <p className="poids">{`${payload[0].value}`}Kg</p>
+        <p className='calories'>{`${payload[1].value}`}Kcal</p>
+      </div>
+    )
   }
+  return null
+}
 
-  BarTooltip.propTypes = {
-    payload: propTypes.array
-  }
+BarTooltip.propTypes = {
+  payload: propTypes.array
+}
 
 
 /********************************************************************************************************* */

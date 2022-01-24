@@ -9,8 +9,8 @@ function App() {
     <div className="App">
         <Header logo={Logo} />
         <div className="body-wrapper">
-          <Footer />
-          <Profile />
+          <Footer credits="Copyright, SportSee 2020" />
+          <Profile secondTitle="Félicitation ! Vous avez explosé vos objectifs hier 👏" />
         </div>
     </div>
   );

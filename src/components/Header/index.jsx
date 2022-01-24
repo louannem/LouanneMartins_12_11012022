@@ -1,4 +1,5 @@
 import React from "react"
+import propTypes from "prop-types"
 
 class Header extends React.Component {
     render() {
@@ -17,6 +18,9 @@ class Header extends React.Component {
             </header>
         )
     }
+}
+Header.propTypes = {
+    logo: propTypes.string.isRequired
 }
 
 export default Header
