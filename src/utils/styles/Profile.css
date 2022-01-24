@@ -9,13 +9,14 @@ h1 {
 }
 h1 span { color: #FF0101}
 
-.profile-content { width: 100%; height: 613px; display: flex; justify-content: space-between; margin-top: 77px}
-.graph-wrapper {width:70%; height: 613px; }
+.profile-content { width: 100%; height: 613px; display: flex; justify-content: flex-start; margin-top: 77px}
+.graph-wrapper {width:835px; height: 613px; margin-right: 50px;}
 .barchart-wrapper { height: 320px; background-color: #FBFBFB; border-radius: 5px;}
 
 .other-graphs { height: 263px; margin-top: 30px; display: flex; justify-content: space-between;}
-.stats-wrapper { width:25%; height: 100%; justify-content: space-between; display: flex; flex-direction: column;}
+.stats-wrapper { width:258px; height: 100%; justify-content: space-between; display: flex; flex-direction: column;}
 
+/** Charts wrappers **/
 .linechart-wrapper, .radarchart-wrapper, .piechart-wrapper {width: 258px; height: 263px; border-radius: 5px; }
 .linechart-wrapper { background: red; }
 .radarchart-wrapper { background: #282D30; font-size: 12px;}

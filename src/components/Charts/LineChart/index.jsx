@@ -1,11 +1,11 @@
 import React from 'react';
 import { LineChart, Line, XAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { UserContext } from '../../UserContext';
-import { LineTooltip, addLineDays } from '../../utils/chartsCustomizing';
-import { fetchData } from '../../utils/service/Service';
-import "../../utils/styles/LineChart.css"
+import { UserContext } from '../../../UserContext';
+import { LineTooltip, addLineDays } from '../../../utils/chartsCustomizing';
+import { fetchData } from '../../../utils/service/Service';
+import "../../../utils/styles/Charts.css"
 
-class LineChartTest extends React.Component {
+class SimpleLineChart extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -14,10 +14,14 @@ class LineChartTest extends React.Component {
      }
   } 
 
-  async update(data) { 
+  /**
+   * Function  to fetch new data after having switched their id
+   * @return {array} data newly fetched data
+   */
+  async changeUser() { 
     if(this.context.userId !== this.state.id) {
-      this.setState({id:this.context.userId});            
-      data = await fetchData(this.context.userId, '/average-sessions')
+      this.setState({id:this.context.userId})         
+      const data = await fetchData(this.context.userId, '/average-sessions')
 
       this.setState({ sessions: data.sessions })
     }
@@ -29,7 +33,7 @@ class LineChartTest extends React.Component {
   }
 
   componentDidUpdate() {
-    this.update()
+    this.changeUser()
   }
 
     render(){
@@ -53,5 +57,5 @@ class LineChartTest extends React.Component {
     }
 }
 
-LineChartTest.contextType = UserContext
-export default LineChartTest
+SimpleLineChart.contextType = UserContext
+export default SimpleLineChart

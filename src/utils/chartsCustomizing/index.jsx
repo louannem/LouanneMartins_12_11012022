@@ -16,6 +16,9 @@ BarCustomTitle.propTypes = {
 }
 
 
+
+/******************************************************************************************* */
+
 /**
  * Custom RadialChart label rendered at the center of the chart
  * @param {props} viewBox container area
@@ -43,6 +46,9 @@ RadialCustomLabel.propTypes = {
 }
 
 
+/********************************************************************************************************* */
+
+
 /**
  * Customized tootlip for BarChart
  * @param {props} active boolean wheckinf if tooltip is displayed 
@@ -64,6 +70,9 @@ export const BarTooltip = ({ active, payload }) => {
   BarTooltip.propTypes = {
     payload: propTypes.array
   }
+
+
+/********************************************************************************************************* */
 
 
 /**
@@ -88,20 +97,43 @@ export const BarTooltip = ({ active, payload }) => {
   }
 
 
-  /**
-   * Adds custom XAxis labels to the LineChart
-   * @param {string} day array element
-   * @returns the daysArray array
-   */
-  export function addLineDays(day) {
-    const daysArray = [
-      "L",
-      "M",
-      "M",
-      "J",
-      "V",
-      "S",
-      "D"
-    ]
-    return daysArray[day - 1]
-  }
+/********************************************************************************************************* */
+
+
+/**
+* Adds custom XAxis labels to the LineChart
+* @param {string} day array element
+* @returns the daysArray array
+*/
+export function addLineDays(day) {
+  const daysArray = [
+    "L",
+    "M",
+    "M",
+    "J",
+    "V",
+    "S",
+    "D"
+  ]
+  return daysArray[day - 1]
+}
+  
+
+/********************************************************************************************************* */
+
+export function addBarAxis(day) {
+  const axisArray = [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10"
+  ]
+  return axisArray[day]
+}
+

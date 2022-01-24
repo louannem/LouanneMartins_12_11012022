@@ -1,8 +1,8 @@
 import React from "react";
 import { RadialBarChart, RadialBar, ResponsiveContainer, PolarAngleAxis } from 'recharts';
-import { UserContext } from "../../UserContext";
-import { RadialCustomLabel } from "../../utils/chartsCustomizing";
-import { fetchData } from "../../utils/service/Service";
+import { UserContext } from "../../../UserContext";
+import { RadialCustomLabel } from "../../../utils/chartsCustomizing";
+import { fetchData } from "../../../utils/service/Service";
 
 class SimpleRadialChart extends React.Component {
     constructor(props) {
@@ -13,7 +13,12 @@ class SimpleRadialChart extends React.Component {
             data02: [{score: null,fill: "#ff0000"}]       
       } 
     }
-      async update() {
+
+    /**
+   * Function  to fetch new data after having switched their id
+   * @return {array} data newly fetched data
+   */
+    async update() {
         if(this.context.userId !== this.state.id) {
             this.setState({id:this.context.userId});            
             const userData = await fetchData(this.context.userId, '')
@@ -21,9 +26,9 @@ class SimpleRadialChart extends React.Component {
             this.setState({
                 data01:[{score: userData.score*100, fill:"#ff0000"}],
                 data02: [{score: userData.todayScore*100,fill: "#ff0000"}]
-               })
-          }
-      }
+            })
+        }
+    }
 
       async componentDidMount(){ 
         const user = await fetchData(this.state.id, '')

@@ -1,9 +1,9 @@
 import React from 'react';
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer } from 'recharts';
-import { UserContext } from '../../UserContext.js';
-import { fetchData } from "../../utils/service/Service.js"
+import { UserContext } from '../../../UserContext.js';
+import { fetchData } from "../../../utils/service/Service.js"
 
-class UserRadarChart extends React.Component {
+class SimpleRadarChart extends React.Component {
 
     constructor(props) {
         super(props);
@@ -14,7 +14,11 @@ class UserRadarChart extends React.Component {
         }
       } 
       
-      async update() {
+    /**
+    * Function  to fetch new data after having switched their id
+    * @param {array} data newly fetched data
+    */
+    async changeUser() {
         if(this.context.userId !== this.state.id) {
             this.setState({id:this.context.userId});            
             const userData = await fetchData(this.context.userId, '/performance')
@@ -26,7 +30,7 @@ class UserRadarChart extends React.Component {
     }
 
 
-      async componentDidMount(){ 
+    async componentDidMount(){ 
         const userPerf = await fetchData(this.state.id, '/performance')
        
         this.setState({
@@ -35,7 +39,9 @@ class UserRadarChart extends React.Component {
         } )
     }
 
-    componentDidUpdate(){ this.update()}
+    componentDidUpdate(){ 
+        this.changeUser()
+    }
 
     
     /**
@@ -70,5 +76,5 @@ class UserRadarChart extends React.Component {
     }
 }
 
-UserRadarChart.contextType = UserContext
-export default UserRadarChart
+SimpleRadarChart.contextType = UserContext
+export default SimpleRadarChart

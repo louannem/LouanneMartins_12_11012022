@@ -1,13 +1,15 @@
 import React from "react"
 import { UserContext } from "../../UserContext"
-import "../../utils/styles/Profile.css"
 import { fetchData } from "../../utils/service/Service.js"
-import BarChartTest from "../BarChart"
-import LineChartTest from "../LineChart"
-import UserRadarChart from "../RadarChart"
-import SimpleRadialChart from "../RadialChart"
-import Card from "../Sidebar"
+
 import { Switch } from "../Switch"
+import BarChartTest from "../Charts/BarChart"
+import SimpleLineChart from "../Charts/LineChart"
+import SimpleRadarChart from "../Charts/RadarChart"
+import SimpleRadialChart from "../Charts/RadialChart"
+import Card from "../Sidebar"
+
+import "../../utils/styles/Profile.css"
 import CaloriesIcon from "../../assets/stats/calories-icon.svg"
 import ProteinIcon from "../../assets/stats/protein-icon.svg"
 import CarbsIcon from "../../assets/stats/carbs-icon.svg"
@@ -77,11 +79,11 @@ class Profile extends React.Component {
                         
                         <div className="other-graphs">
                             <div className="linechart-wrapper">
-                                <LineChartTest/>
+                                <SimpleLineChart/>
                             </div>
 
                             <div className="radarchart-wrapper">
-                                <UserRadarChart/>
+                                <SimpleRadarChart/>
                             </div>
 
                             <div className="piechart-wrapper">

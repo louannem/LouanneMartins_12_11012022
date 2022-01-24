@@ -1,23 +1,27 @@
-import React from 'react';
-import { UserContext } from "../../UserContext"
+import React from 'react'
+import { UserContext } from '../../../UserContext'
+import { fetchData } from '../../../utils/service/Service';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { fetchData } from '../../utils/service/Service';
-import { BarTooltip, BarCustomTitle } from '../../utils/chartsCustomizing';
-import "../../utils/styles/BarChart.css"
+import { addBarAxis, BarTooltip, BarCustomTitle } from '../../../utils/chartsCustomizing';
+import '../../../utils/styles/Charts.css'
 
 class BarChartTest extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = { 
       id: 18,
       sessions:[] 
     }
   } 
 
-  async update(data) {
+  /**
+   * Function to fetch new data after having switched their id
+   * @return {array} data newly fetched data
+   */
+  async changeUser() {
     if(this.context.userId !== this.state.id) {
       this.setState({id:this.context.userId});            
-      data = await fetchData(this.context.userId,'/activity')
+      const data = await fetchData(this.context.userId,'/activity')
 
       this.setState({
         sessions: data.sessions
@@ -35,7 +39,7 @@ class BarChartTest extends React.Component {
   }
 
   componentDidUpdate(){ 
-    this.update() 
+    this.changeUser() 
   }
 
      
@@ -46,7 +50,7 @@ class BarChartTest extends React.Component {
                 <BarChart data={this.state.sessions} margin={{ top: 45, right: 30, left: 40, bottom: 10, }} >
                 <CartesianGrid strokeDasharray="2" />
 
-                <XAxis dataKey="name" tickLine={false} tick={{fontSize: "14px"}} dy={5} />
+                <XAxis  tickFormatter={addBarAxis}  tickLine={false} tick={{fontSize: "14px"}} dy={5} />
                 <YAxis orientation="right" tickLine={false} tick={{fontSize: "14px"}}  />
 
                 <Tooltip content={<BarTooltip />} cursor={{ fill: "#C4C4C4", fillOpacity: 0.5 }}/>

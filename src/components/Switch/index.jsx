@@ -2,6 +2,10 @@ import React, { useContext } from "react";
 import { UserContext } from "../../UserContext"
 
 
+/**
+ * Switch button to change th user's id in current state
+ * @returns Button
+ */
 export const Switch = () => {
     const data = useContext(UserContext)
 
@@ -10,6 +14,6 @@ export const Switch = () => {
     }
 
     return(
-        <button onClick={handleChange}>Changer user</button>
+        <button onClick={handleChange} className="switch-user">Passer à un autre utilisateur</button>
     )
 }
