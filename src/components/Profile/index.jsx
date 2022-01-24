@@ -1,7 +1,7 @@
 import React from "react"
 import { UserContext } from "../../UserContext"
 import "../../utils/styles/Profile.css"
-import { fetchUSerData, fetchData } from "../../utils/service/Service.js"
+import { fetchData } from "../../utils/service/Service.js"
 import BarChartTest from "../BarChart"
 import LineChartTest from "../LineChart"
 import UserRadarChart from "../RadarChart"
@@ -18,6 +18,7 @@ class Profile extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            id: 18,
             name: '',
             calories:'',
             proteines:'',
@@ -42,10 +43,9 @@ class Profile extends React.Component {
       }
 
     async componentDidMount(){ 
-        const user = await fetchUSerData()
+        const user = await fetchData(this.state.id,'')
      
         this.setState({
-            id: 18,
             name: user.userInfos.firstName,
             calories:user.keyData.calorieCount,
             proteines:user.keyData.proteinCount,

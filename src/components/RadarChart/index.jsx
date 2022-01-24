@@ -1,7 +1,7 @@
 import React from 'react';
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer } from 'recharts';
 import { UserContext } from '../../UserContext.js';
-import { fetchPerfData, fetchData } from "../../utils/service/Service.js"
+import { fetchData } from "../../utils/service/Service.js"
 
 class UserRadarChart extends React.Component {
 

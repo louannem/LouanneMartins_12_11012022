@@ -2,7 +2,7 @@ import React from 'react';
 import { LineChart, Line, XAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { UserContext } from '../../UserContext';
 import { LineTooltip, addLineDays } from '../../utils/chartsCustomizing';
-import { fetchSessionData, fetchData } from '../../utils/service/Service';
+import { fetchData } from '../../utils/service/Service';
 import "../../utils/styles/LineChart.css"
 
 class LineChartTest extends React.Component {
@@ -24,7 +24,7 @@ class LineChartTest extends React.Component {
   }
 
   async componentDidMount(){ 
-    const userSession = await fetchSessionData(this.state.id)
+    const userSession = await fetchData(this.state.id, '/average-sessions')
     this.setState({ sessions: userSession.sessions })
   }
 

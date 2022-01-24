@@ -1,7 +1,7 @@
 import React from 'react';
 import { UserContext } from "../../UserContext"
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { fetchActivityData, fetchData } from '../../utils/service/Service';
+import { fetchData } from '../../utils/service/Service';
 import { BarTooltip, BarCustomTitle } from '../../utils/chartsCustomizing';
 import "../../utils/styles/BarChart.css"
 
@@ -27,7 +27,7 @@ class BarChartTest extends React.Component {
 
 
   async componentDidMount(){ 
-    const userActivity = await fetchActivityData()
+    const userActivity = await fetchData(this.state.id,'/activity')
 
     this.setState({
      sessions: userActivity.sessions

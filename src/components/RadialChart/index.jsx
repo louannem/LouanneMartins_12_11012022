@@ -2,7 +2,7 @@ import React from "react";
 import { RadialBarChart, RadialBar, ResponsiveContainer, PolarAngleAxis } from 'recharts';
 import { UserContext } from "../../UserContext";
 import { RadialCustomLabel } from "../../utils/chartsCustomizing";
-import { fetchUSerData, fetchData } from "../../utils/service/Service";
+import { fetchData } from "../../utils/service/Service";
 
 class SimpleRadialChart extends React.Component {
     constructor(props) {
@@ -26,13 +26,12 @@ class SimpleRadialChart extends React.Component {
       }
 
       async componentDidMount(){ 
-        const user = await fetchUSerData()
+        const user = await fetchData(this.state.id, '')
         this.setState({  data01:[{score: user.score*100, fill:"#ff0000"}] })
       }
 
       componentDidUpdate() {
           this.update()
-          console.log(this.state.data02)
       }
 
     render(){
