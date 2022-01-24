@@ -32,14 +32,25 @@ class SimpleRadialChart extends React.Component {
 
       componentDidUpdate() {
           this.update()
+          console.log(this.state.data02)
       }
 
     render(){
-        return(
+        return( 
+            this.state.id === 18 ?
             <ResponsiveContainer width="100%" height="100%">
                 <RadialBarChart startAngle={-270} endAngle={90} cx="50%" cy="50%" innerRadius="70%" outerRadius="80%" barSize={10} data={this.state.data01}>
                     <PolarAngleAxis type="number" domain={[0, 100]} tick={false}  />
                     <RadialBar cornerRadius={10} minAngle={15} label={<RadialCustomLabel line1={this.state.data01[0].score + "%"} line2="de votre objectif" />} clockWise dataKey="score" />
+                </RadialBarChart>
+            </ResponsiveContainer>
+
+            :
+
+            <ResponsiveContainer width="100%" height="100%">
+                <RadialBarChart startAngle={-270} endAngle={90} cx="50%" cy="50%" innerRadius="70%" outerRadius="80%" barSize={10} data={this.state.data02}>
+                    <PolarAngleAxis type="number" domain={[0, 100]} tick={false}  />
+                    <RadialBar cornerRadius={10} minAngle={15} label={<RadialCustomLabel line1={this.state.data02[0].score + "%"} line2="de votre objectif" />} clockWise dataKey="score" />
                 </RadialBarChart>
             </ResponsiveContainer>
         )
