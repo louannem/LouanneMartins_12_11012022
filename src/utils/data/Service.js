@@ -11,3 +11,11 @@ export const fetchData = (id, path) => {
     .catch((error) => console.log(error))
     )
 }
+
+export const fetchUser = (id, path) => {
+    return fetch(`http://localhost:3000/user/`+id+path)
+    .then((response) => response.json()
+    .catch((error) => console.log(error))
+    )
+    
+}

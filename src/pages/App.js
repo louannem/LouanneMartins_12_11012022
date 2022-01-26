@@ -1,6 +1,6 @@
 import Header from '../components/Header'
-import Footer from '../components/Footer'
-import Profile from '../components/Profile'
+import Sidebar from '../components/Sidebar'
+import Dashboard from '../components/Dashboard'
 import Logo from '../assets/logo.svg'
 import '../utils/styles/Header.css'
 
@@ -9,8 +9,8 @@ function App() {
     <div className="App">
         <Header logo={Logo} />
         <div className="body-wrapper">
-          <Footer credits="Copyright, SportSee 2020" />
-          <Profile secondTitle="Félicitation ! Vous avez explosé vos objectifs hier 👏" />
+          <Sidebar credits="Copyright, SportSee 2020" />
+          <Dashboard secondTitle="Félicitation ! Vous avez explosé vos objectifs hier 👏" />
         </div>
     </div>
   );

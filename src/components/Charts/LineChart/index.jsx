@@ -1,45 +1,29 @@
-import React from 'react';
-import { LineChart, Line, XAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { UserContext } from '../../../UserContext';
-import { LineTooltip, addLineDays } from '../../../utils/chartsCustomizing';
-import { fetchData } from '../../../utils/service/Service';
-import "../../../utils/styles/Charts.css"
+import { useEffect, useState, useContext } from "react"
+import { LineChart, Line, XAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts'
+import UserSessions from "../../../utils/data/user/UserSessions"
+import { fetchUser } from "../../../utils/data/Service"
+import { UserContext } from "../../../UserContext"
 
-class SimpleLineChart extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      id:18, 
-      sessions:[]
-     }
-  } 
+import { LineTooltip, addLineDays } from '../../../utils/chartsCustomizing'
 
-  /**
-   * Function  to fetch new data after having switched their id
-   * @return {array} data newly fetched data
-   */
-  async changeUser() { 
-    if(this.context.userId !== this.state.id) {
-      this.setState({id:this.context.userId})         
-      const data = await fetchData(this.context.userId, '/average-sessions')
+import "../../../utils/styles/Dashboard.css"
 
-      this.setState({ sessions: data.sessions })
-    }
-  }
+export default function SimpleLineChart() {
+    const [userSessions, setUserData] = useState({})
+    const context = useContext(UserContext)
 
-  async componentDidMount(){ 
-    const userSession = await fetchData(this.state.id, '/average-sessions')
-    this.setState({ sessions: userSession.sessions })
-  }
+    useEffect(() => {
+        //Fetches data & creates a new user
+        fetchUser(context.userId,'/average-sessions')
+        .then((user) => {
+            const newSessions = new UserSessions(user.data)
+            setUserData(newSessions)
+        })
+    },[context.userId])  
 
-  componentDidUpdate() {
-    this.changeUser()
-  }
-
-    render(){
-        return(
-            <ResponsiveContainer width="100%" height="100%" fill="red">
-                <LineChart width="100%" height="100%" data={this.state.sessions} margin={{ top: 30, right: 10, left: 10, bottom: 0, }} >
+    return(
+        <ResponsiveContainer width="100%" height="100%" fill="red">
+                <LineChart width="100%" height="100%" data={userSessions.sessions} margin={{ top: 30, right: 10, left: 10, bottom: 0, }} >
                   <CartesianGrid strokeDasharray="3 3" fill="#FF0000"  />
                   <defs>
                       <linearGradient id="linear" x1="0" y1="0.5" x2="1" y2="1">
@@ -53,9 +37,5 @@ class SimpleLineChart extends React.Component {
                   <Line activeDot={{ fill: "#ffff",  r: 3 }}  type="monotone" dataKey="sessionLength" stroke="url(#linear)" dot={false} strokeWidth={2} name="Durée moyenne des sessions"/>
                 </LineChart>
             </ResponsiveContainer>
-        )
-    }
+    )
 }
-
-SimpleLineChart.contextType = UserContext
-export default SimpleLineChart

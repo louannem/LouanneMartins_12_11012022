@@ -16,7 +16,7 @@ Analytics dashboard developped with React & Recharts
 4. Run the app with `npm start`
 5. Open the app on another port than 3000
 
-### Backend API
+## Backend API
 The backend API has two possible URL:
 - localhost:3000/user/12
 - localhost:3000/user/18
