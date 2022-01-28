@@ -21,6 +21,9 @@ import SimpleLineChart from "../Charts/LineChart"
 
 function Dashboard({secondTitle}){
     const [userData, setUserData] = useState({})
+    const [isLoading, setIsLoading] = useState(true)
+    const [hasError, setHasError] = useState(false) 
+
     const context = useContext(UserContext)
 
     useEffect(() => {
@@ -31,11 +34,26 @@ function Dashboard({secondTitle}){
         .then((user) => {
             const newUser = new User(user.data)
             setUserData(newUser)
+            setIsLoading(false)
+        })
+        .catch((error) => {
+            setHasError(true)
         })
 
-    },[context.userId])  
+    },[context.userId, isLoading, hasError])  
 
+    
     return(
+        hasError ?  
+        <div className="profile-wrapper">
+            <p className="loading-text">Impossible de récupérer les données.</p> 
+        </div>
+        :
+        isLoading ? 
+        <div className="profile-wrapper">
+            <p className="loading-text">Loading...</p> 
+        </div>
+        :
         <div className="profile-wrapper">
             <div className="profile-title">
                 <h1>Bonjour <span>{userData.firstName}</span></h1>
@@ -74,6 +92,7 @@ function Dashboard({secondTitle}){
                 </div>
             </div>
         </div>
+        
     )
 }
 

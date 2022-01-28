@@ -22,9 +22,9 @@ export default function SimpleLineChart() {
     },[context.userId])  
 
     return(
-        <ResponsiveContainer width="100%" height="100%" fill="red">
-                <LineChart width="100%" height="100%" data={userSessions.sessions} margin={{ top: 30, right: 10, left: 10, bottom: 0, }} >
-                  <CartesianGrid strokeDasharray="3 3" fill="#FF0000"  />
+        <ResponsiveContainer className="lineChart-custom" width="100%" height="100%" fill="red">
+                <LineChart  width="100%" height="100%" data={userSessions.sessions} margin={{ top: 30, right: 10, left: 10, bottom: 0, }} >
+                  <CartesianGrid strokeDasharray="3 3"  />
                   <defs>
                       <linearGradient id="linear" x1="0" y1="0.5" x2="1" y2="1">
                           <stop offset="50%" stopColor="#ffff" stopOpacity={0.4}/>

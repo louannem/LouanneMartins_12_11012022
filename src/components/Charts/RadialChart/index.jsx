@@ -22,7 +22,7 @@ export default function SimpleRadialChart() {
     },[context.userId]) 
   
     /**
-     * Creates an object to fill the chart
+     * Object to fill the chart
      */
     const scoreObj =[{
         score: userScore.score*100,
@@ -33,7 +33,7 @@ export default function SimpleRadialChart() {
         <ResponsiveContainer width="100%" height="100%">
             <RadialBarChart startAngle={-270} endAngle={90} cx="50%" cy="50%" innerRadius="70%" outerRadius="80%" barSize={10} data={scoreObj}>
                 <PolarAngleAxis type="number" domain={[0, 100]} tick={false}  />
-                <RadialBar cornerRadius={10} minAngle={15} label={<RadialCustomLabel line1={userScore.score*100 + "%"} line2="de votre objectif" />} clockWise dataKey="score" />
+                <RadialBar cornerRadius={10} minAngle={15} label={<RadialCustomLabel line1={userScore.score*100+"%"} line2="de votre objectif" />} clockWise dataKey="score" />
             </RadialBarChart>
         </ResponsiveContainer>
     )
