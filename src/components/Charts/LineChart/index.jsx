@@ -1,29 +1,15 @@
-import { useEffect, useState, useContext } from "react"
+import propTypes from 'prop-types'
 import { LineChart, Line, XAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts'
-import UserSessions from "../../../utils/data/user/UserSessions"
-import { fetchUser } from "../../../utils/data/Service"
-import { UserContext } from "../../../UserContext"
-
 import { LineTooltip, addLineDays } from '../../../utils/chartsCustomizing'
 
 import "../../../utils/styles/Dashboard.css"
 
-export default function SimpleLineChart() {
-    const [userSessions, setUserData] = useState({})
-    const context = useContext(UserContext)
 
-    useEffect(() => {
-        //Fetches data & creates a new user
-        fetchUser(context.userId,'/average-sessions')
-        .then((user) => {
-            const newSessions = new UserSessions(user.data)
-            setUserData(newSessions)
-        })
-    },[context.userId])  
+export default function SimpleLineChart({data}) {
 
     return(
         <ResponsiveContainer className="lineChart-custom" width="100%" height="100%" fill="red">
-                <LineChart  width="100%" height="100%" data={userSessions.sessions} margin={{ top: 30, right: 10, left: 10, bottom: 0, }} >
+                <LineChart  width="100%" height="100%" data={data.sessions} margin={{ top: 30, right: 10, left: 10, bottom: 0, }} >
                   <CartesianGrid strokeDasharray="3 3"  />
                   <defs>
                       <linearGradient id="linear" x1="0" y1="0.5" x2="1" y2="1">
@@ -38,4 +24,11 @@ export default function SimpleLineChart() {
                 </LineChart>
             </ResponsiveContainer>
     )
+}
+
+SimpleLineChart.propTypes = {
+    data : propTypes.shape({
+        id: propTypes.number,
+        sessions: propTypes.array
+    })
 }

@@ -1,5 +1,12 @@
 import { useEffect, useState, useContext } from "react"
 import User from "../../utils/data/user/UserDetails"
+import UserActivity from "../../utils/data/user/UserActivity"
+import UserSessions from "../../utils/data/user/UserSessions"
+import UserPerformance from "../../utils/data/user/UserPerformance"
+
+//Delete comment to use mocked data
+//import { mockedUserData, mockedUserPerformance, mockedUserSessions, mockedUserActivity } from "../../utils/data/mockedData.js"
+
 import {fetchUser} from "../../utils/data/Service"
 import { UserContext } from "../../UserContext"
 
@@ -21,25 +28,40 @@ import SimpleLineChart from "../Charts/LineChart"
 
 function Dashboard({secondTitle}){
     const [userData, setUserData] = useState({})
+    const [userActivity, setUserActivity] = useState({})
+    const [userSessions, setUserSessions] = useState({})
+    const [userPerformance, setUserPerformance] = useState({})
+
     const [isLoading, setIsLoading] = useState(true)
     const [hasError, setHasError] = useState(false) 
 
     const context = useContext(UserContext)
+    
 
     useEffect(() => {
+
+        /* Delete comment to use mocked data
+        const newUser = new User(mockedUserData) ; setUserData(newUser)
+        const newActivity = new UserActivity(mockedUserAactivity) ; setUserActivity(newActivity)
+        const newSessions = new UserSessions(mockedUserSessions) ; setUserSessions(newSessions)
+        const newPerformance = new UserPerformance(mockedUserPerformance) ; setUserPerformance(newPerformance)
+        */
+
+
         /**
          * Fetches data & creates a new user based on class constructor
          */
-        fetchUser(context.userId,'')
-        .then((user) => {
-            const newUser = new User(user.data)
-            setUserData(newUser)
-            setIsLoading(false)
-        })
-        .catch((error) => {
-            setHasError(true)
-        })
+        fetchUser(context.userId,'').then((user) => { const newUser = new User(user.data) ; setUserData(newUser) ; setIsLoading(false)})
+        .catch(() => { setHasError(true) })
 
+        fetchUser(context.userId,'/activity').then((user) => { const newActivity = new UserActivity(user.data) ; setUserActivity(newActivity) })
+        .catch(() => { setHasError(true)})
+
+        fetchUser(context.userId,'/average-sessions').then((user) => { const newSessions = new UserSessions(user.data) ; setUserSessions(newSessions) })
+        .catch(() => { setHasError(true)})
+
+        fetchUser(context.userId,'/performance').then((user) => { const newPerformance = new UserPerformance(user.data) ; setUserPerformance(newPerformance) })
+        .catch(() => { setHasError(true)})
     },[context.userId, isLoading, hasError])  
 
     
@@ -48,7 +70,9 @@ function Dashboard({secondTitle}){
         <div className="profile-wrapper">
             <p className="loading-text">Impossible de récupérer les données.</p> 
         </div>
+
         :
+        
         isLoading ? 
         <div className="profile-wrapper">
             <p className="loading-text">Loading...</p> 
@@ -65,21 +89,21 @@ function Dashboard({secondTitle}){
             <div className="profile-content">
                 <div className="graph-wrapper">
                     <div className="barchart-wrapper">
-                        <BarChart />
+                        <BarChart data={userActivity} />
                     </div>
 
                     <div className="other-graphs">
                         
                         <div className="linechart-wrapper">
-                            <SimpleLineChart />
+                            <SimpleLineChart data={userSessions} />
                         </div>
 
                         <div className="radarchart-wrapper">
-                            <SimpleRadarChart/>
+                            <SimpleRadarChart data={userPerformance}  />
                         </div>
 
                         <div className="piechart-wrapper">
-                            <SimpleRadialChart/>
+                            <SimpleRadialChart data={userData}/>
                         </div>
                     </div>
                 </div>

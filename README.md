@@ -5,9 +5,9 @@ Analytics dashboard developped with React & Recharts
 ## Prerequisites
 
 - Node.js
-- React
-- Recharts
-- Prop-types
+- React v17.0.2
+- Recharts v2.1.8
+- Prop-types v15.8.1
 - VSCode
 
 ## Running the backend API

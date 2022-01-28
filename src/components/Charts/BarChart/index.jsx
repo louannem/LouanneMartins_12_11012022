@@ -1,28 +1,13 @@
-import { useState, useContext, useEffect } from "react"
-import { UserContext } from "../../../UserContext"
-import { fetchUser } from "../../../utils/data/Service"
-import UserActivity from "../../../utils/data/user/UserActivity"
+import propTypes from 'prop-types';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { addBarAxis, BarTooltip, BarCustomTitle } from '../../../utils/chartsCustomizing';
 
 import '../../../utils/styles/Charts.css'
 
-export default function SimpleBarChart() {
-    const [userActivity, setUserData] = useState({})
-    const context = useContext(UserContext)
-
-    useEffect(() => {
-        //Fetches data & creates a new user
-        fetchUser(context.userId,'/activity')
-        .then((user) => {
-            const newActivity = new UserActivity(user.data)
-            setUserData(newActivity)
-        })
-    },[context.userId])  
-
+export default function SimpleBarChart({data}) {
     return(
         <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={userActivity.activity} margin={{ top: 45, right: 30, left: 40, bottom: 10, }} >
+                <BarChart data={data.activity} margin={{ top: 45, right: 30, left: 40, bottom: 10, }} >
                 <CartesianGrid strokeDasharray="2" />
 
                 <XAxis  tickFormatter={addBarAxis}  tickLine={false} tick={{fontSize: "14px"}} dy={5} />
@@ -36,4 +21,12 @@ export default function SimpleBarChart() {
                 </BarChart>
         </ResponsiveContainer>
     )
+}
+
+
+SimpleBarChart.propTypes = {
+    data : propTypes.shape({
+        id: propTypes.number,
+        activity: propTypes.array
+    })
 }
