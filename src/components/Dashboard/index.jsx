@@ -25,6 +25,8 @@ import SimpleRadialChart from "../Charts/RadialChart"
 import Card from "../Cards"
 import BarChart from "../Charts/BarChart"
 import SimpleLineChart from "../Charts/LineChart"
+import Error from "../../pages/Error"
+import Loading from "../../pages/Loading"
 
 function Dashboard({secondTitle}){
     const [userData, setUserData] = useState({})
@@ -67,16 +69,13 @@ function Dashboard({secondTitle}){
     
     return(
         hasError ?  
-        <div className="profile-wrapper">
-            <p className="loading-text">Impossible de récupérer les données.</p> 
-        </div>
-
+        <Error />
+        
         :
         
         isLoading ? 
-        <div className="profile-wrapper">
-            <p className="loading-text">Loading...</p> 
-        </div>
+        <Loading />
+        
         :
         <div className="profile-wrapper">
             <div className="profile-title">

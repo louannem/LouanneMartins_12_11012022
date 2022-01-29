@@ -25,4 +25,6 @@ The backend API has two possible URL:
 2. Run the project with `npm start` in a terminal while running the backend API
 3. Open the project a port other than 3000
 
-By default, user 18 is fetched. You can switch between each URL by clicking on "Changer d'utilisateur" on the interface, when the app is running. 
+## Using the API or mocked data
+By default, user 18 is fetched. You can switch between each URL by clicking on "Changer d'utilisateur" on the interface, when the app is running.
+To use mocked data, disable each fetchUser function and enable the mocked data code blocks and its import.  
