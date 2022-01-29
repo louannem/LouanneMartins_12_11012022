@@ -17,15 +17,17 @@ h1 span { color: #FF0101}
 .other-graphs { height: 263px; margin-top: 30px; display: flex; justify-content: space-between;}
 .stats-wrapper { width:258px; height: 100%; justify-content: space-between; display: flex; flex-direction: column;}
 
+
+/** Switch user button **/
 .switch-user { 
     background-color: #20253A; 
     color: #ffff; 
     border: 0px; 
     padding: 5px; 
     cursor: pointer;
-    position: absolute;
+    position: relative;
     left: 75%;
-    top: 25%;
+    top: -10%;
     border-radius: 5px
 }
 
