@@ -28,4 +28,4 @@ The backend API has two possible users you can check in your browser :
 ## Using the API or mocked data
 By default, user 18 is fetched. You can switch between each URL by clicking on "Changer d'utilisateur" on the interface, while the app is running.
 
-  To use mocked data, disable each fetchUser function from line 56 to 66 in *src/components/Dashboard/index.jsx*, and enable the mocked data code blocks (lines 46 to 51) and its import (line 8) in the same file.  
+\To use mocked data, disable each fetchUser function from line 56 to 66 in *src/components/Dashboard/index.jsx*, and enable the mocked data code blocks (lines 46 to 51) and its import (line 8) in the same file.  
