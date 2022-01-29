@@ -34,8 +34,9 @@ function Dashboard({secondTitle}){
     const [userSessions, setUserSessions] = useState({})
     const [userPerformance, setUserPerformance] = useState({})
 
-    const [isLoading, setIsLoading] = useState(true)
+    const [isLoading, setIsLoading] = useState(false)
     const [hasError, setHasError] = useState(false) 
+    const [hasFecthed, setFetched] = useState(false)
 
     const context = useContext(UserContext)
     
@@ -44,16 +45,15 @@ function Dashboard({secondTitle}){
 
         /* Delete comment to use mocked data
         const newUser = new User(mockedUserData) ; setUserData(newUser)
-        const newActivity = new UserActivity(mockedUserAactivity) ; setUserActivity(newActivity)
+        const newActivity = new UserActivity(mockedUserActivity) ; setUserActivity(newActivity)
         const newSessions = new UserSessions(mockedUserSessions) ; setUserSessions(newSessions)
         const newPerformance = new UserPerformance(mockedUserPerformance) ; setUserPerformance(newPerformance)
         */
 
-
         /**
          * Fetches data & creates a new user based on class constructor
          */
-        fetchUser(context.userId,'').then((user) => { const newUser = new User(user.data) ; setUserData(newUser) ; setIsLoading(false)})
+       fetchUser(context.userId,'').then((user) => { const newUser = new User(user.data) ; setUserData(newUser) ; setIsLoading(false) ; setFetched(true)}) 
         .catch(() => { setHasError(true) })
 
         fetchUser(context.userId,'/activity').then((user) => { const newActivity = new UserActivity(user.data) ; setUserActivity(newActivity) })
@@ -83,7 +83,10 @@ function Dashboard({secondTitle}){
                 <h2>{secondTitle}</h2>
             </div>
 
-            <Switch buttonText="Changer d'utilisateur" />
+            {hasFecthed &&
+                <Switch buttonText="Changer d'utilisateur" />
+            }
+            
 
             <div className="profile-content">
                 <div className="graph-wrapper">
