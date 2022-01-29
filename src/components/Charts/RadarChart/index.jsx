@@ -1,7 +1,7 @@
 import React from 'react';
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer } from 'recharts';
 import { UserContext } from '../../../UserContext.js';
-import { fetchData } from "../../../utils/data/Service.js"
+import { fetchUser } from "../../../utils/data/Service.js"
 
 class SimpleRadarChart extends React.Component {
 
@@ -21,7 +21,7 @@ class SimpleRadarChart extends React.Component {
     async changeUser() {
         if(this.context.userId !== this.state.id) {
             this.setState({id:this.context.userId});            
-            const userData = await fetchData(this.context.userId, '/performance')
+            const userData = await fetchUser(this.context.userId, '/performance').then((user) => user.data )
 
             this.setState({
                 data: userData.data
@@ -31,7 +31,7 @@ class SimpleRadarChart extends React.Component {
 
 
     async componentDidMount(){ 
-        const userPerf = await fetchData(this.state.id, '/performance')
+        const userPerf = await fetchUser(this.state.id, '/performance').then((user) => user.data )
        
         this.setState({
             data: userPerf.data,

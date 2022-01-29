@@ -49,11 +49,10 @@ function Dashboard({secondTitle}){
         const newSessions = new UserSessions(mockedUserSessions) ; setUserSessions(newSessions)
         const newPerformance = new UserPerformance(mockedUserPerformance) ; setUserPerformance(newPerformance)
         */
-
         /**
          * Fetches data & creates a new user based on class constructor
          */
-       fetchUser(context.userId,'').then((user) => { const newUser = new User(user.data) ; setUserData(newUser) ; setIsLoading(false) ; setFetched(true)}) 
+       fetchUser(context.userId,'').then((user) => {  const newUser = new User(user.data) ; setUserData(newUser) ; setIsLoading(false) ; setFetched(true)}) 
         .catch(() => { setHasError(true) })
 
         fetchUser(context.userId,'/activity').then((user) => { const newActivity = new UserActivity(user.data) ; setUserActivity(newActivity) })
