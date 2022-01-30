@@ -56,7 +56,7 @@ function Dashboard({secondTitle}){
         const userPerformance = performance.userData
         const userActivity = activity.userData
         const userSessions = averageSessions.userData
-        console.log(userData, userPerformance, userActivity)
+      
         return(
            
             <div className="profile-wrapper">
@@ -83,7 +83,7 @@ function Dashboard({secondTitle}){
                             </div>
 
                             <div className="radarchart-wrapper">
-                                <SimpleRadarChart data={userPerformance}  />
+                                <SimpleRadarChart data={userPerformance.performance}  />
                             </div>
 
                             <div className="piechart-wrapper">

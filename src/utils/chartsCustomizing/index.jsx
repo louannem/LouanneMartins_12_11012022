@@ -1,5 +1,15 @@
 import propTypes from "prop-types"
 
+const labels = [
+  "Cardio",
+  "Intensité",
+  "Vitesse",
+  "Force",
+  "Endurance",
+  "Energie"
+]
+
+export const addKind = (kind) =>  labels[kind - 1]
 /**
  * 
  * @param {string} param0 BarChart title  

@@ -28,7 +28,7 @@ export default function Service(id,path) {
                 : path === '/activity' ?  userObj = new UserActivity(user.data)
                 : path === '/average-sessions' ? userObj = new UserSessions(user.data)
                 : userObj = new UserPerformance(user.data)
-                //console.log(userObj)
+                
                 setData(userObj)
                
             } catch (error) {
