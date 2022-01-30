@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import propTypes from "prop-types";
-import { UserContext } from "../../UserContext"
+import { UserContext } from "../../utils/UserContext"
 
 
 /**

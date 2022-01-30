@@ -32,7 +32,7 @@ export const RadialCustomLabel = ({viewBox, line1, line2}) => {
       <svg>
           <circle cx="50%" cy="50%" r="80" strokeWidth="0" fill="white" />
           <text x={cx} y={cy-10} fill="#3d405c" className="recharts-text recharts-label" textAnchor="middle" dominantBaseline="central">
-              <tspan alignmentBaseline="middle" fontSize="26">{line1}</tspan>
+              <tspan alignmentBaseline="middle" fontSize="26" fontWeight={600}>{line1}</tspan>
               <tspan fontSize="16" x={cx} dy="24" fill="#74798C">{line2}</tspan>
           </text>
       </svg>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer } from 'recharts';
-import { UserContext } from '../../../UserContext.js';
-import { fetchData } from "../../../utils/data/Service.js"
+import { UserContext } from '../../../utils/UserContext.js'
+import { fetchData } from "../../../utils/data/Service.jsx"
 
 class SimpleRadarChart extends React.Component {
 
@@ -11,6 +11,14 @@ class SimpleRadarChart extends React.Component {
             id:18,
             data:[],
             kind:[],
+            labels : [
+                "Cardio",
+                "Intensité",
+                "Vitesse",
+                "Force",
+                "Endurance",
+                "Energie"
+            ]
         }
       } 
       
@@ -44,21 +52,14 @@ class SimpleRadarChart extends React.Component {
     }
 
     
+    
     /**
      * Adds a customized XAxis to the RadarChart based on datas with capitalized labels
      * Needs fetched datas in current state to work
      * @param {string} kind array element 
      * @returns labelArray with index shifted by 1
      */
-    addKind = (kind) => {
-        const labelArray = []
-        Object.keys(this.state.kind).map(([key]) =>  labelArray.push(this.state.kind[key]))
-        
-        for(let i = 0 ; i < labelArray.length ; i++){
-            labelArray[i] = labelArray[i].charAt(0).toUpperCase() + labelArray[i].substr(1);
-        }   
-        return  labelArray[kind - 1];
-    }
+    addKind = (kind) => this.state.labels[kind - 1]
     
 
     render() {   

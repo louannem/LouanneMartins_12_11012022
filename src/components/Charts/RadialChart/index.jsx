@@ -1,6 +1,6 @@
 import React from "react"
 import { RadialBarChart, RadialBar, ResponsiveContainer, PolarAngleAxis } from 'recharts'
-import { UserContext } from "../../../UserContext"
+import { UserContext } from "../../../utils/UserContext"
 import { RadialCustomLabel } from "../../../utils/chartsCustomizing"
 import { fetchUser } from "../../../utils/data/Service"
 
