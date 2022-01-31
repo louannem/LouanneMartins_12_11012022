@@ -1,6 +1,6 @@
-import { useEffect, useContext } from "react"
+import { useContext } from "react"
 
-//Delete comment to use mocked data
+//Mock data to activate on the homepage
 import { mockedUserData, mockedUserPerformance, mockedUserSessions, mockedUserActivity } from "../../utils/data/mockedData.js"
 
 import { UserContext } from "../../utils/UserContext"
