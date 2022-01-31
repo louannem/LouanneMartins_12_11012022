@@ -1,15 +1,24 @@
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom"
+import propTypes from "prop-types"
 
 
 /**
  * Switch button to change th user's id in current state
  * @returns Button
  */
-export const Switch = () => {
+export const Switch = ({activeUser}) => {
     return(
-        <Link to="/" className="switch-user">
-            Changer d'utilisateur
-        </Link>
+        <div className="switch-block">
+            <p>Utilisateur actif : {activeUser}</p>
+            <Link to="/" className="switch-button">
+                Changer d'utilisateur
+            </Link>
+        </div>
         
     )
+}
+
+
+Switch.propTypes = {
+    activeUser: propTypes.string
 }

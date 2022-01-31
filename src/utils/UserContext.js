@@ -10,6 +10,9 @@ export const UserProvider = ({ children }) => {
   const [mockUsed, setMock] = useState(false)
   const [APIUsed, setAPI] = useState(false)
 
+  /**
+   * Function to change mockUsed, APIUsed and userId values
+   */
   const switchToAPI12 = () => { setAPI(true); setMock(false) ; setId(12)}
   const switchToAPI18 = () => { setAPI(true); setMock(false) ; setId(18)}
   const switchToMock = () => { setMock(true) ; setAPI(false)}

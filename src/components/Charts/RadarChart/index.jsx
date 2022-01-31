@@ -8,12 +8,10 @@ export default function SimpleRadarCharts({data}) {
 
 
     return(        
-        <ResponsiveContainer width="100%" height="100%">
-            <RadarChart outerRadius={90} width={730} height={250} data={data}>
-                <PolarGrid radialLines={false} />
-               
-                <PolarAngleAxis dataKey="kind" tickFormatter={addKind} tick={{ fill: '#ffff'}} /> 
-                                   
+        <ResponsiveContainer width="70%" height="100%">
+            <RadarChart outerRadius={90}  height={250} data={data}>
+                <PolarGrid radialLines={false} />               
+                <PolarAngleAxis  dataKey="kind" tickFormatter={addKind} tick={{ fill: '#ffff'}} /> 
                 <Radar dataKey="value" stroke="#FF0101" fill="#FF0101" fillOpacity={0.7} />
             </RadarChart>
         </ResponsiveContainer>

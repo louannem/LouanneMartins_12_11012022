@@ -31,7 +31,6 @@ import UserSessions from "../../utils/data/user/UserSessions"
 function Dashboard({secondTitle, userDetails, activity, performance, averageSessions}){
     const context = useContext(UserContext)
 
-    //context.APIUsed &&  console.log(context.APIUsed)
     if(context.APIUsed) {
         userDetails = Service(context.userId,'')
         activity = Service(context.userId, '/activity')
@@ -44,20 +43,6 @@ function Dashboard({secondTitle, userDetails, activity, performance, averageSess
         averageSessions = { userData: new UserSessions(mockedUserSessions)}
 
     }
-
-    useEffect(() => {
-        
-        /* Delete comment to use mocked data
-        const newUser = new User(mockedUserData) ; setUserData(newUser)
-        const newActivity = new UserActivity(mockedUserActivity) ; setUserActivity(newActivity)
-        const newSessions = new UserSessions(mockedUserSessions) ; setUserSessions(newSessions)
-        const newPerformance = new UserPerformance(mockedUserPerformance) ; setUserPerformance(newPerformance)
-        */      
-        
-        
-    },[])  
-
-
     
     if(userDetails.hasError || performance.hasError || activity.hasError || averageSessions.hasError ) { 
         return <Error/>
@@ -79,7 +64,7 @@ function Dashboard({secondTitle, userDetails, activity, performance, averageSess
                 </div>
 
 
-                <Switch />
+                <Switch activeUser={context.APIUsed ? `API` :  `mock` } />
                 
                 
                 <div className="profile-content">
