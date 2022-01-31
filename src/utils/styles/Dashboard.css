@@ -10,24 +10,38 @@ h1 {
 }
 h1 span { color: #FF0101}
 
-.profile-content { width: 100%; height: 613px; display: flex; justify-content: flex-start; margin-top: 77px}
+.profile-content { width: 100%; height: 613px; display: flex; justify-content: flex-start; }
 .graph-wrapper {width:835px; height: 613px; margin-right: 50px;}
 .barchart-wrapper { height: 320px; background-color: #FBFBFB; border-radius: 5px;}
+
+.radarchart-wrapper { display: flex; align-items: center; justify-content: center;}
+.radarchart-wrapper .recharts-polar-grid-concentric { width: 100px;}
+.radarchart-wrapper .recharts-surface { overflow: visible; width: 170px;}
 
 .other-graphs { height: 263px; margin-top: 30px; display: flex; justify-content: space-between;}
 .stats-wrapper { width:258px; height: 100%; justify-content: space-between; display: flex; flex-direction: column;}
 
+.piechart-wrapper span {
+    font-weight: 700;
+    font-size: 15px;
+    position: relative;
+    top: 25px;
+    left: 30px;
+}
 
-/** Switch user button **/
-.switch-user { 
-    background-color: #20253A; 
-    color: #ffff; 
-    border: 0px; 
-    padding: 5px; 
-    cursor: pointer;
+.switch-block { 
+    width: 300px;
+    height: 100px;
     position: relative;
     left: 75%;
-    top: -10%;
+    bottom: 10%;
+    font-size: 14px;
+}
+
+.switch-block p { margin: 0;}
+.switch-button { 
+    color: #20253A; 
+    cursor: pointer;
     border-radius: 5px
 }
 

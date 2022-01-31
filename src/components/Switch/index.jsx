@@ -1,24 +1,24 @@
-import React, { useContext } from "react";
-import propTypes from "prop-types";
-import { UserContext } from "../../UserContext"
+import { Link } from "react-router-dom"
+import propTypes from "prop-types"
 
 
 /**
  * Switch button to change th user's id in current state
  * @returns Button
  */
-export const Switch = ({buttonText}) => {
-    const data = useContext(UserContext)
-
-    const handleChange = () => {
-        data.switchUser()
-    }
-
+export const Switch = ({activeUser}) => {
     return(
-        <button onClick={handleChange} className="switch-user">{buttonText}</button>
+        <div className="switch-block">
+            <p>Utilisateur actif : {activeUser}</p>
+            <Link to="/" className="switch-button">
+                Changer d'utilisateur
+            </Link>
+        </div>
+        
     )
 }
 
+
 Switch.propTypes = {
-    buttonText: propTypes.string.isRequired
+    activeUser: propTypes.string
 }

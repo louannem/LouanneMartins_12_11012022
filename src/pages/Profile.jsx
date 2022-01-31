@@ -4,7 +4,7 @@ import Dashboard from '../components/Dashboard'
 import Logo from '../assets/logo.svg'
 import '../utils/styles/Header.css'
 
-function App() {
+export default function Profile() {
   return (
     <div className="App">
         <Header logo={Logo} />
@@ -13,7 +13,6 @@ function App() {
           <Dashboard secondTitle="Félicitation ! Vous avez explosé vos objectifs hier 👏" />
         </div>
     </div>
-  );
+  )
 }
 
-export default App;

@@ -13,7 +13,8 @@ Analytics dashboard developped with React & Recharts
 ## Running the backend API
 1. Go to https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard 
 3. Clone the repository on your computer
-4. Run the API with `yarn start`
+4. Run `yarn` to install the dependencies
+5. Run the API with `yarn start`
 The API should run on port 3000 by default
 
 The backend API has two possible users you can check in your browser :
@@ -22,6 +23,7 @@ The backend API has two possible users you can check in your browser :
 
 ## Lauching the project
 1. Clone this repository on your computer
+2. Run `npm install` to install the dependencies
 2. Run the project with `npm start` in a terminal while running the backend API
 3. Open the project on a port other than 3000
 

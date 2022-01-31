@@ -2,8 +2,8 @@ export const mockedUserData =
     {
         id: 18,
         userInfos : {
-            firstName: "",
-            lastName: "",
+            firstName: "John",
+            lastName: "Doe",
             age: 56
         },
         score: 0.6,
@@ -19,7 +19,7 @@ export const mockedUserData =
 
 
 export const mockedUserPerformance = {
-    data: {
+    data :{
         userId: 18,
         kind: {
             1:"cardio",
@@ -27,35 +27,35 @@ export const mockedUserPerformance = {
             3:"endurance",
             4:"strength",
             5:"speed",
-            6:"intendity"
+            6:"intensity"
         },
 
-        data : {
-            0: {
+        data : [
+            {
                 value:210,
                 kind: 1
             },
-            1: {
+            {
                 value: 200,
                 kind: 2
             },
-            2: {
+            {
                 value: 95,
                 kind: 3
             },
-            3: {
+            {
                 value: 70,
                 kind: 4
             },
-            4: {
+            {
                 value: 230,
                 kind: 5
             },
-            6: {
+            { 
                 value: 130,
                 kind: 6
             }
-        }
+        ]
     }
 }
 

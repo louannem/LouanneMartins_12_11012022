@@ -19,6 +19,16 @@ BarCustomTitle.propTypes = {
 
 /******************************************************************************************* */
 
+
+export const RadialTitle = ({title}) => {
+  return(
+    <svg>
+      <text>{title}</text>
+    </svg>
+  )
+}
+
+
 /**
  * Custom RadialChart label rendered at the center of the chart
  * @param {props} viewBox container area
@@ -26,14 +36,14 @@ BarCustomTitle.propTypes = {
  * @param {props} line2 second line added to the custom label
  * @returns svg block containing a circle, line1 and line2
  */
-export const RadialCustomLabel = ({viewBox, line1, line2}) => {
+export const RadialCustomLabel = ({viewBox, line1}) => {
   const {cx, cy} = viewBox;
   return (
       <svg>
           <circle cx="50%" cy="50%" r="80" strokeWidth="0" fill="white" />
           <text x={cx} y={cy-10} fill="#3d405c" className="recharts-text recharts-label" textAnchor="middle" dominantBaseline="central">
-              <tspan alignmentBaseline="middle" fontSize="26">{line1}</tspan>
-              <tspan fontSize="16" x={cx} dy="24" fill="#74798C">{line2}</tspan>
+              <tspan alignmentBaseline="middle" fontSize="26" fontWeight={600}>{line1}</tspan>
+              <tspan fontSize="16" x={cx} dy="24" fill="#74798C">de votre objectif</tspan>
           </text>
       </svg>
   )
@@ -42,7 +52,6 @@ export const RadialCustomLabel = ({viewBox, line1, line2}) => {
 RadialCustomLabel.propTypes = {
   viewBox: propTypes.object,
   line1: propTypes.string.isRequired,
-  line2: propTypes.string
 }
 
 

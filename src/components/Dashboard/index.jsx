@@ -1,15 +1,9 @@
-import { useEffect, useState, useContext } from "react"
-import User from "../../utils/data/user/UserDetails"
-import UserActivity from "../../utils/data/user/UserActivity"
-import UserSessions from "../../utils/data/user/UserSessions"
-import UserPerformance from "../../utils/data/user/UserPerformance"
+import { useEffect, useContext } from "react"
 
 //Delete comment to use mocked data
-//import { mockedUserData, mockedUserPerformance, mockedUserSessions, mockedUserActivity } from "../../utils/data/mockedData.js"
+import { mockedUserData, mockedUserPerformance, mockedUserSessions, mockedUserActivity } from "../../utils/data/mockedData.js"
 
-import {fetchUser} from "../../utils/data/Service"
-import { UserContext } from "../../UserContext"
-
+import { UserContext } from "../../utils/UserContext"
 import "../../utils/styles/Dashboard.css"
 
 //Assets 
@@ -28,97 +22,86 @@ import SimpleLineChart from "../Charts/LineChart"
 import Error from "../../pages/Error"
 import Loading from "../../pages/Loading"
 
-function Dashboard({secondTitle}){
-    const [userData, setUserData] = useState({})
-    const [userActivity, setUserActivity] = useState({})
-    const [userSessions, setUserSessions] = useState({})
-    const [userPerformance, setUserPerformance] = useState({})
+import Service from "../../utils/data/Fetch"
+import User from "../../utils/data/user/UserDetails"
+import UserActivity from "../../utils/data/user/UserActivity"
+import UserPerformance from "../../utils/data/user/UserPerformance"
+import UserSessions from "../../utils/data/user/UserSessions"
 
-    const [isLoading, setIsLoading] = useState(false)
-    const [hasError, setHasError] = useState(false) 
-    const [hasFecthed, setFetched] = useState(false)
-
+function Dashboard({secondTitle, userDetails, activity, performance, averageSessions}){
     const context = useContext(UserContext)
+
+    if(context.APIUsed) {
+        userDetails = Service(context.userId,'')
+        activity = Service(context.userId, '/activity')
+        performance = Service(context.userId, '/performance')
+        averageSessions = Service(context.userId,'/average-sessions')
+    } else if (context.mockUsed) {
+        userDetails = { userData: new User(mockedUserData)}
+        activity = { userData: new UserActivity(mockedUserActivity)}
+        performance = { userData: new UserPerformance(mockedUserPerformance.data)}        
+        averageSessions = { userData: new UserSessions(mockedUserSessions)}
+
+    }
     
-
-    useEffect(() => {
-
-        /* Delete comment to use mocked data
-        const newUser = new User(mockedUserData) ; setUserData(newUser)
-        const newActivity = new UserActivity(mockedUserActivity) ; setUserActivity(newActivity)
-        const newSessions = new UserSessions(mockedUserSessions) ; setUserSessions(newSessions)
-        const newPerformance = new UserPerformance(mockedUserPerformance) ; setUserPerformance(newPerformance)
-        */
-        /**
-         * Fetches data & creates a new user based on class constructor
-         */
-       fetchUser(context.userId,'').then((user) => {  const newUser = new User(user.data) ; setUserData(newUser) ; setIsLoading(false) ; setFetched(true)}) 
-        .catch(() => { setHasError(true) })
-
-        fetchUser(context.userId,'/activity').then((user) => { const newActivity = new UserActivity(user.data) ; setUserActivity(newActivity) })
-        .catch(() => { setHasError(true)})
-
-        fetchUser(context.userId,'/average-sessions').then((user) => { const newSessions = new UserSessions(user.data) ; setUserSessions(newSessions) })
-        .catch(() => { setHasError(true)})
-
-        fetchUser(context.userId,'/performance').then((user) => { const newPerformance = new UserPerformance(user.data) ; setUserPerformance(newPerformance) })
-        .catch(() => { setHasError(true)})
-    },[context.userId, isLoading, hasError])  
-
-    
-    return(
-        hasError ?  
-        <Error />
+    if(userDetails.hasError || performance.hasError || activity.hasError || averageSessions.hasError ) { 
+        return <Error/>
+    } else if (userDetails.isLoading || performance.isLoading || activity.isLoading || averageSessions.isLoading) {
+        return <Loading />
+    } else {
+       
+        const userData = userDetails.userData
+        const userPerformance = performance.userData
+        const userActivity = activity.userData
+        const userSessions = averageSessions.userData
         
-        :
-        
-        isLoading ? 
-        <Loading />
-        
-        :
-        <div className="profile-wrapper">
-            <div className="profile-title">
-                <h1>Bonjour <span>{userData.firstName}</span></h1>
-                <h2>{secondTitle}</h2>
+        return(
+           
+            <div className="profile-wrapper">
+                <div className="profile-title">
+                    <h1>Bonjour <span>{userData.firstName}</span></h1>
+                    <h2>{secondTitle}</h2>
+                </div>
+
+
+                <Switch activeUser={context.APIUsed ? `API` :  `mock` } />
+                
+                
+                <div className="profile-content">
+                    <div className="graph-wrapper">
+                        <div className="barchart-wrapper">
+                            <BarChart data={userActivity} />
+                            
+                        </div>
+
+                        <div className="other-graphs">
+                            
+                            <div className="linechart-wrapper">
+                                <SimpleLineChart data={userSessions} />
+                            </div>
+
+                            <div className="radarchart-wrapper">
+                                <SimpleRadarChart data={userPerformance.performance}  />
+                            </div>
+
+                            <div className="piechart-wrapper">
+                            <span>Score</span>
+                                <SimpleRadialChart data={userData}/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="stats-wrapper">
+                        <Card img={CaloriesIcon} value={`${userData.calories}kCal`} type="Calories" />
+                        <Card img={ProteinIcon} value={`${userData.proteines}g`} type="Proteines" />
+                        <Card img={CarbsIcon} value={`${userData.glucides}g`} type="Glucides" />
+                        <Card img={FatIcon} value={`${userData.lipides}g`} type="Lipides" />
+                    </div>
+                </div>
             </div>
-
-            {hasFecthed &&
-                <Switch buttonText="Changer d'utilisateur" />
-            }
             
-
-            <div className="profile-content">
-                <div className="graph-wrapper">
-                    <div className="barchart-wrapper">
-                        <BarChart data={userActivity} />
-                    </div>
-
-                    <div className="other-graphs">
-                        
-                        <div className="linechart-wrapper">
-                            <SimpleLineChart data={userSessions} />
-                        </div>
-
-                        <div className="radarchart-wrapper">
-                            <SimpleRadarChart data={userPerformance}  />
-                        </div>
-
-                        <div className="piechart-wrapper">
-                            <SimpleRadialChart data={userData}/>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="stats-wrapper">
-                    <Card img={CaloriesIcon} value={`${userData.calories}kCal`} type="Calories" />
-                    <Card img={ProteinIcon} value={`${userData.proteines}g`} type="Proteines" />
-                    <Card img={CarbsIcon} value={`${userData.glucides}g`} type="Glucides" />
-                    <Card img={FatIcon} value={`${userData.lipides}g`} type="Lipides" />
-                </div>
-            </div>
-        </div>
-        
-    )
+        )
+    }
 }
 
 export default Dashboard
