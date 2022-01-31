@@ -87,6 +87,7 @@ function Dashboard({secondTitle}){
                             </div>
 
                             <div className="piechart-wrapper">
+                            <span>Score</span>
                                 <SimpleRadialChart data={userData}/>
                             </div>
                         </div>

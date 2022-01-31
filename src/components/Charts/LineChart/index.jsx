@@ -31,13 +31,11 @@ export default function SimpleLineChart({data}) {
       let lengthArray=[]
       data.sessions.map((session) => {
           lengthArray.push(session.sessionLength)
-          console.log(lengthArray)
           return lengthArray
       })
 
       const minY = Math.min(...lengthArray)/2
       const maxY = Math.max(...lengthArray)+20
-      console.log(minY, maxY)
 
     return(
         <ResponsiveContainer className="lineChart-custom" width="100%" height="100%" fill="red" >

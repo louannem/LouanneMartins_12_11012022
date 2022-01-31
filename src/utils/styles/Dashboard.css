@@ -17,6 +17,14 @@ h1 span { color: #FF0101}
 .other-graphs { height: 263px; margin-top: 30px; display: flex; justify-content: space-between;}
 .stats-wrapper { width:258px; height: 100%; justify-content: space-between; display: flex; flex-direction: column;}
 
+.piechart-wrapper span {
+    font-weight: 700;
+    font-size: 15px;
+    position: relative;
+    top: 25px;
+    left: 30px;
+}
+
 .switch-user { 
     background-color: #20253A; 
     color: #ffff; 
