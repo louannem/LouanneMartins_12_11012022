@@ -1,4 +1,5 @@
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer } from 'recharts'
+import propTypes from 'prop-types'
 
 export default function SimpleRadarCharts({data}) {    
     const addKind = (kind) => {
@@ -6,6 +7,7 @@ export default function SimpleRadarCharts({data}) {
         return labels[kind - 1]
       }
 
+      
     return(        
         <ResponsiveContainer width="70%" height="100%">
             <RadarChart outerRadius={90}  height={250} data={data}>
@@ -17,4 +19,8 @@ export default function SimpleRadarCharts({data}) {
         
     )
     
+}
+
+SimpleRadarCharts.propTypes = {
+    data: propTypes.array.isRequired
 }

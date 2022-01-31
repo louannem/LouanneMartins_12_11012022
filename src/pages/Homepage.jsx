@@ -7,7 +7,7 @@ export default function Homepage() {
     const context = useContext(UserContext)
     
         /**
-         * Functions to call context's hook
+         * Functions to call context's data
          */
         const handleSwitchToMock = () => { context.switchToMock()}
         const handleSwitchToAPI12 = ()=> { context.switchToAPI12()}

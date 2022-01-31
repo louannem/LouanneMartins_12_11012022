@@ -1,4 +1,5 @@
 import { useContext } from "react"
+import propTypes from "prop-types"
 
 //Mock data to activate on the homepage
 import { mockedUserData, mockedUserPerformance, mockedUserSessions, mockedUserActivity } from "../../utils/data/mockedData.js"
@@ -28,7 +29,7 @@ import UserActivity from "../../utils/data/user/UserActivity"
 import UserPerformance from "../../utils/data/user/UserPerformance"
 import UserSessions from "../../utils/data/user/UserSessions"
 
-function Dashboard({secondTitle, userDetails, activity, performance, averageSessions}){
+export default function Dashboard({secondTitle, userDetails, activity, performance, averageSessions}){
     const context = useContext(UserContext)
 
     if(context.APIUsed) {
@@ -104,4 +105,10 @@ function Dashboard({secondTitle, userDetails, activity, performance, averageSess
     }
 }
 
-export default Dashboard
+ Dashboard.propTypes = {
+     secondTitle: propTypes.string,
+     userDetails: propTypes.object,
+     activity: propTypes.object,
+     performance : propTypes.object,
+     averageSessions: propTypes.object
+ }

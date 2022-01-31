@@ -1,9 +1,8 @@
+import propTypes from 'prop-types'
 import { RadialBarChart, RadialBar, ResponsiveContainer, PolarAngleAxis } from 'recharts'
 import { RadialCustomLabel } from "../../../utils/chartsCustomizing"
 
 export default function SimpleRadialChart({data}) {
-
-
     const scoreObj = [{
         score: data.score*100,
         fill: "#ff0000"
@@ -18,4 +17,17 @@ export default function SimpleRadialChart({data}) {
         </ResponsiveContainer>
     )
 
+}
+
+SimpleRadialChart.propTypes = {
+    data: propTypes.shape ({
+        id: propTypes.number,
+        firstName: propTypes.string,
+        lastName: propTypes.string,
+        score: propTypes.number.isRequired,
+        calories: propTypes.number,
+        proteines: propTypes.number,
+        glucides: propTypes.number,
+        lipides: propTypes.number
+    })
 }
