@@ -8,7 +8,7 @@ export default function SimpleRadialChart({data}) {
         score: data.score*100,
         fill: "#ff0000"
     }]
-    console.log(<RadialCustomLabel line1={scoreObj[0].score + "%"}  />)
+    
     return(
         <ResponsiveContainer width="100%" height="100%">
             <RadialBarChart  startAngle={-270} endAngle={90} cx="50%" cy="50%" innerRadius="70%" outerRadius="80%" barSize={10} data={scoreObj}>

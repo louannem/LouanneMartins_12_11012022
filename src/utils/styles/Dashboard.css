@@ -26,14 +26,12 @@ h1 span { color: #FF0101}
 }
 
 .switch-user { 
-    background-color: #20253A; 
-    color: #ffff; 
-    border: 0px; 
-    padding: 5px; 
+    text-decoration: none; 
+    color: #20253A; 
     cursor: pointer;
-    position: absolute;
+    position: relative;
     left: 75%;
-    top: 25%;
+    bottom: 10%;
     border-radius: 5px
 }
 

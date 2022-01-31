@@ -27,7 +27,7 @@ export default function SimpleLineChart({data}) {
         )
       }
 
-      console.log(data.sessions)
+     
       let lengthArray=[]
       data.sessions.map((session) => {
           lengthArray.push(session.sessionLength)
@@ -39,7 +39,7 @@ export default function SimpleLineChart({data}) {
 
     return(
         <ResponsiveContainer className="lineChart-custom" width="100%" height="100%" fill="red" >
-                <LineChart  width="100%"  data={data.sessions} margin={{ top: 0, right: 5, left: 5, bottom: 0, }}  >
+                <LineChart  width="100%"  data={data.sessions} margin={{ top: 0, right: 0, left: 5, bottom: 0, }}  >
                   <CartesianGrid strokeDasharray="3 3"  />
                   <defs>
                       <linearGradient id="linear" x1="0" y1="0.5" x2="1" y2="1">

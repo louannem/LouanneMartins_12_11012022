@@ -1,46 +1,24 @@
 import React, { createContext, useState } from "react"
-import { useEffect } from "react";
-
 
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
-  const [userId, setId] = useState(18)
-
-  const [data, setData] = useState({})
-  const [isLoading, setLoading] = useState(false)
-  const [error, setError] = useState(false)
-
-  const switchUser = () => {
-    if(userId === 12) { setId(18);  } else if (userId === 18) {setId(12); }
-  }
+  const [userId, setId] = useState(null)
 
 
-  useEffect(() => {
-    setLoading(true)
+  //By default, none are used and the user is asked to choose one
+  const [mockUsed, setMock] = useState(false)
+  const [APIUsed, setAPI] = useState(false)
 
-    const fetchDatas = async () => {
-        setLoading(true)
-        
-        try {
-            const response = await fetch(`http://localhost:3000/user/` + userId)
-            const user = await response.json()
-            setData(user.data)
-        } catch (error) {
-            setError(true)
-            console.log(error)
-        }
-        finally {
-            setLoading(false)
-        }
-    }
-    fetchDatas()
-}, [userId])
- 
+  const switchToAPI12 = () => { setAPI(true); setMock(false) ; setId(12)}
+  const switchToAPI18 = () => { setAPI(true); setMock(false) ; setId(18)}
+  const switchToMock = () => { setMock(true) ; setAPI(false)}
+
+
   const { Provider } = UserContext
 
   return (
-    <Provider value={{userId, switchUser, data, isLoading, error}}>
+    <Provider value={{userId,  switchToMock, switchToAPI12, switchToAPI18, mockUsed, APIUsed}}>
       {children}
     </Provider>
   );

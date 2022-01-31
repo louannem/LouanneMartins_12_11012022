@@ -1,7 +1,7 @@
 import { useEffect, useContext } from "react"
 
 //Delete comment to use mocked data
-//import { mockedUserData, mockedUserPerformance, mockedUserSessions, mockedUserActivity } from "../../utils/data/mockedData.js"
+import { mockedUserData, mockedUserPerformance, mockedUserSessions, mockedUserActivity } from "../../utils/data/mockedData.js"
 
 import { UserContext } from "../../utils/UserContext"
 import "../../utils/styles/Dashboard.css"
@@ -23,14 +23,27 @@ import Error from "../../pages/Error"
 import Loading from "../../pages/Loading"
 
 import Service from "../../utils/data/Fetch"
+import User from "../../utils/data/user/UserDetails"
+import UserActivity from "../../utils/data/user/UserActivity"
+import UserPerformance from "../../utils/data/user/UserPerformance"
+import UserSessions from "../../utils/data/user/UserSessions"
 
-function Dashboard({secondTitle}){
+function Dashboard({secondTitle, userDetails, activity, performance, averageSessions}){
     const context = useContext(UserContext)
 
-    const userDetails = Service(context.userId,'')
-    const activity = Service(context.userId, '/activity')
-    const performance = Service(context.userId, '/performance')
-    const averageSessions = Service(context.userId,'/average-sessions')
+    //context.APIUsed &&  console.log(context.APIUsed)
+    if(context.APIUsed) {
+        userDetails = Service(context.userId,'')
+        activity = Service(context.userId, '/activity')
+        performance = Service(context.userId, '/performance')
+        averageSessions = Service(context.userId,'/average-sessions')
+    } else if (context.mockUsed) {
+        userDetails = { userData: new User(mockedUserData)}
+        activity = { userData: new UserActivity(mockedUserActivity)}
+        performance = { userData: new UserPerformance(mockedUserPerformance.data)}        
+        averageSessions = { userData: new UserSessions(mockedUserSessions)}
+
+    }
 
     useEffect(() => {
         
@@ -51,12 +64,12 @@ function Dashboard({secondTitle}){
     } else if (userDetails.isLoading || performance.isLoading || activity.isLoading || averageSessions.isLoading) {
         return <Loading />
     } else {
-        
+       
         const userData = userDetails.userData
         const userPerformance = performance.userData
         const userActivity = activity.userData
         const userSessions = averageSessions.userData
-      
+        
         return(
            
             <div className="profile-wrapper">
@@ -66,7 +79,7 @@ function Dashboard({secondTitle}){
                 </div>
 
 
-                <Switch buttonText="Changer d'utilisateur" />
+                <Switch />
                 
                 
                 <div className="profile-content">
