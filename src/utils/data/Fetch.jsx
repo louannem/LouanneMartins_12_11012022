@@ -7,12 +7,11 @@ import UserSessions from "./user/UserSessions"
 import { UserContext } from "../UserContext"
 
 /**
- * Service to fetch API's datas
+ * Service to fetch API's datas or use mocked data based on context 
  * @param {number} id user's id, used in state (18 by default can be switched)
  * @param {string} path the API path to get a specific set of datas needed by the charts 
- * @returns array of datas
+ * @returns array of datas : isLoading boolean, hasError boolean & userData object
  */
-
 
 export default function Service(id,path) {
     const context = useContext(UserContext) 

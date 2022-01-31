@@ -8,8 +8,8 @@ import "../../../utils/styles/Dashboard.css"
 export default function SimpleLineChart({data}) {
     /**
      * 
-     * @param {*} props 
-     * @returns 
+     * @param {*} props points repères du rectangle, hauteur, largeur
+     * @returns Component Rectangle
      */
     const CustomCursor = (props) => {
         const { points, width, height } = props
