@@ -10,7 +10,7 @@ import { UserContext } from "../UserContext"
  * Service to fetch API's datas or use mocked data based on context 
  * @param {number} id user's id, used in state (18 by default can be switched)
  * @param {string} path the API path to get a specific set of datas needed by the charts 
- * @returns array of datas : isLoading boolean, hasError boolean & userData object
+ * @returns  isLoading boolean, hasError boolean & userData object
  */
 
 export default function Service(id,path) {
@@ -19,8 +19,7 @@ export default function Service(id,path) {
     const [isLoading, setIsLoading] = useState(true)
     const [hasError, setHasError] = useState(false) 
 
-    useEffect(() => {
-        
+    useEffect(() => {        
             async function fetchUser() {
                 try {
                     const response = await fetch('http://localhost:3000/user/'+id+path)

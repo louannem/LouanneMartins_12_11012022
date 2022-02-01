@@ -24,5 +24,7 @@ code {
   justify-content: center;
   margin-top: 200px
 }
+.user-selection img { margin: 10px 0px; height: 100px}
 .user-selection a { margin: 10px 0px  }
+.user-selection button:hover { text-decoration: underline;}
 .user-selection button {cursor: pointer; background: none ; border: none}

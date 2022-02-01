@@ -19,16 +19,6 @@ BarCustomTitle.propTypes = {
 
 /******************************************************************************************* */
 
-
-export const RadialTitle = ({title}) => {
-  return(
-    <svg>
-      <text>{title}</text>
-    </svg>
-  )
-}
-
-
 /**
  * Custom RadialChart label rendered at the center of the chart
  * @param {props} viewBox container area
@@ -86,7 +76,7 @@ BarTooltip.propTypes = {
 
 /**
  * Customized tootlip for LineChart
- * @param {props} active boolean wheckinf if tooltip is displayed 
+ * @param {props} active boolean checking if tooltip is displayed 
  * @param {props} payload source of the fetched data 
  * @returns Custom content in LineChart Tootlip
  */

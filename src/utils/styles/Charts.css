@@ -22,10 +22,10 @@
 /***********  LineChart  *************/
 .other-graphs .recharts-cartesian-grid-horizontal { display: none;}
 
-.lineChart-custom .recharts-legend-item-text {position: relative; top: 20px; left: 34px}
 .recharts-line { margin-top: 200px}
 
-.linechart-wrapper .recharts-legend-item-text { color: white; opacity: 0.5;}
+.linechart-wrapper  { position: relative;}
+.linechart-title { color: #ffffff; opacity: 0.5; position: absolute; top: 30px ; left: 34px; width: 148px ; font-size: 15px; line-height: 24px;}
 
 .custom-line-chart-tooltip {
     min-width: 50px ;

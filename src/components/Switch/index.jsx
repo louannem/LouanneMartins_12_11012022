@@ -3,8 +3,8 @@ import propTypes from "prop-types"
 
 
 /**
- * Switch button to change th user's id in current state
- * @returns Button
+ * Switch button to change the user's id in current state
+ * @returns HTML element
  */
 export const Switch = ({activeUser}) => {
     return(

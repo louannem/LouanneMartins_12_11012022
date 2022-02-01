@@ -28,4 +28,4 @@
     margin: 10px 0px
 }
 
-.sidebar span { writing-mode: sideways-lr; margin: 100px 0px 50px 0px; font-weight: 500; font-size: 12px;}
+.sidebar span { writing-mode: vertical-lr;transform: rotate(180deg); margin: 100px 0px 50px 0px; font-weight: 500; font-size: 12px;}

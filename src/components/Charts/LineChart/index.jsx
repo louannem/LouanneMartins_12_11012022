@@ -1,14 +1,13 @@
 import propTypes from 'prop-types'
-import { LineChart, Line, XAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Rectangle, YAxis } from 'recharts'
+import { LineChart, Line, XAxis, CartesianGrid, Tooltip, ResponsiveContainer, Rectangle, YAxis } from 'recharts'
 import { LineTooltip, addLineDays } from '../../../utils/chartsCustomizing'
 
 import "../../../utils/styles/Dashboard.css"
 
-
 export default function SimpleLineChart({data}) {
     /**
-     * 
-     * @param {*} props points repères du rectangle, hauteur, largeur
+     * Creates a rectangle based on the coordinates of an active dot
+     * @param {*} props active dots on hover, height, width of the rectangle to be created 
      * @returns Component Rectangle
      */
     const CustomCursor = (props) => {
@@ -22,12 +21,12 @@ export default function SimpleLineChart({data}) {
             x={x}
             y={y}
             width={width}
-            height={height+100}
+            height={height+200}
           />
         )
       }
 
-     
+     //YAxis domain
       let lengthArray=[]
       data.sessions.map((session) => {
           lengthArray.push(session.sessionLength)
@@ -50,8 +49,7 @@ export default function SimpleLineChart({data}) {
                   <XAxis className='linechart-Xaxis' dataKey="day" tickFormatter={addLineDays} tickLine={false} tick={{ fill: 'white' }} fillOpacity={0.5} />
                   <YAxis domain={[minY, maxY]} hide={true} />
                   <Tooltip stroke="#ffff"  content={<LineTooltip />} cursor={<CustomCursor />} />
-                  <Legend iconSize="0" layout="horizontal" verticalAlign="top" align="left" width="150px" />
-                  <Line activeDot={{ fill: "#ffff",  r: 3 }}  type="monotone" dataKey="sessionLength" stroke="url(#linear)" dot={false} strokeWidth={2} name="Durée moyenne des sessions"/>
+                  <Line activeDot={{ fill: "#ffff",  r: 3 }}  type="monotone" dataKey="sessionLength" stroke="url(#linear)" dot={false} strokeWidth={2} name=''/>
                 </LineChart>
             </ResponsiveContainer>
     )

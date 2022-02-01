@@ -5,25 +5,6 @@ import { addBarAxis, BarTooltip, BarCustomTitle } from '../../../utils/chartsCus
 import '../../../utils/styles/Charts.css'
 
 export default function SimpleBarChart({data}) {
-   
-    let KgArray=[]
-      data.activity.map((act) => {
-        KgArray.push(act.kilogram)
-        return KgArray
-      })
-
-    let calArray = []
-    data.activity.map((act) => {
-        calArray.push(act.calories)
-        return calArray
-    })
-
-      const minKg = Math.min(...KgArray)
-      const maxKg = Math.max(...KgArray)
-
-      const minCal = Math.min(...calArray)
-      const maxCal = Math.max(...calArray)
-
 
     return(
         <ResponsiveContainer width="100%" height="100%">
@@ -31,15 +12,15 @@ export default function SimpleBarChart({data}) {
                 <CartesianGrid strokeDasharray="2" />
 
                 <XAxis  tickFormatter={addBarAxis}  tickLine={false} tick={{fontSize: "14px"}} dy={5} />
-                <YAxis orientation='left' hide={true}   />
-                <YAxis orientation='right' tickLine={true}  dataKey="kilogram"  />
+                <YAxis orientation='left' yAxisId="cal-axis" hide={true}  dataKey="calories" />
+                <YAxis orientation='right' tickCount={3} yAxisId="kg-axis" tickLine={true}  dataKey="kilogram"  />
                 
 
                 <Tooltip content={<BarTooltip />} cursor={{ fill: "#C4C4C4", fillOpacity: 0.5 }}/>
                 <Legend iconType="circle" layout="horizontal" verticalAlign="top" align="right" wrapperStyle={{ marginTop: "-20px", marginRight:"20px", color: "#74798C"}} />
                 
-                <Bar name="Poids (kg)" label={<BarCustomTitle title="Activité quotidienne"/>}  dataKey="kilogram" fill="#020203" barSize={7} radius={[3, 3, 0, 0]} />
-                <Bar name="Calories brûlées (kCal)" dataKey="calories" fill="#ff0101" barSize={7} radius={[3, 3, 0, 0]} />
+                <Bar name="Poids (kg)" yAxisId="kg-axis" label={<BarCustomTitle title="Activité quotidienne"/>}  dataKey="kilogram" fill="#020203" barSize={7} radius={[3, 3, 0, 0]} />
+                <Bar name="Calories brûlées (kCal)" yAxisId="cal-axis" dataKey="calories" fill="#ff0101" barSize={7} radius={[3, 3, 0, 0]} />
                 </BarChart>
         </ResponsiveContainer>
     )

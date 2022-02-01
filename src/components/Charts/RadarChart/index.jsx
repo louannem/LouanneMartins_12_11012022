@@ -1,7 +1,13 @@
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer } from 'recharts'
 import propTypes from 'prop-types'
 
-export default function SimpleRadarCharts({data}) {    
+export default function SimpleRadarCharts({data}) {   
+    
+    /**
+     * Customized list for the chart's axis
+     * @param {*} kind Array element
+     * @returns Each array element shifted by - 1
+     */
     const addKind = (kind) => {
         const labels = [ 'Cardio', 'Energie', 'Endurance', 'Force', 'Vitesse', 'Intensité']
         return labels[kind - 1]

@@ -1,26 +1,26 @@
-import React from "react"
 import propTypes from "prop-types"
+import { Link } from "react-router-dom"
+import Logo from "../../assets/logo.svg"
 
-class Header extends React.Component {
-    render() {
-        return(
-            <header>
-                <div className="logo-wrapper">
-                    <img src={this.props.logo} alt="Logo SportSee" />
-                </div>
+export default function Header() {
+    return(
+        <header>
+            <div className="logo-wrapper">
+                <Link to="/">
+                    <img src={Logo} alt="Logo SportSee" />
+                </Link>
+            </div>
 
-                <nav>
-                    <a href="/">Accueil</a>
-                    <a href="/">Profil</a>
-                    <a href="/">Réglage</a>
-                    <a href="/">Communauté</a>
-                </nav>
-            </header>
-        )
-    }
+            <nav>
+                <a href="/">Accueil</a>
+                <a href="/">Profil</a>
+                <a href="/">Réglage</a>
+                <a href="/">Communauté</a>
+            </nav>
+        </header>
+    )
 }
+
 Header.propTypes = {
     logo: propTypes.string.isRequired
 }
-
-export default Header

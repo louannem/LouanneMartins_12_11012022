@@ -78,6 +78,7 @@ export default function Dashboard({secondTitle, userDetails, activity, performan
                         <div className="other-graphs">
                             
                             <div className="linechart-wrapper">
+                            <div className="linechart-title">Durée moyenne des sessions</div>
                                 <SimpleLineChart data={userSessions} />
                             </div>
 

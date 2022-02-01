@@ -3,6 +3,7 @@ import { RadialBarChart, RadialBar, ResponsiveContainer, PolarAngleAxis } from '
 import { RadialCustomLabel } from "../../../utils/chartsCustomizing"
 
 export default function SimpleRadialChart({data}) {
+    
     const scoreObj = [{
         score: data.score*100,
         fill: "#ff0000"
