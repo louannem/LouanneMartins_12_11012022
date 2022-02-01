@@ -23,7 +23,7 @@ export default function SimpleBarChart({data}) {
 
                 <XAxis  tickFormatter={addBarAxis}  tickLine={false} tick={{fontSize: "14px"}} dy={5} />
                 <YAxis orientation='left' yAxisId="cal-axis" hide={true}  dataKey="calories"  />
-                <YAxis orientation='right' tickCount={3} yAxisId="kg-axis" tickLine={true}  dataKey="kilogram" domain={[minKg - 3, maxKg + 2]}  />
+                <YAxis orientation='right' tickCount={3} yAxisId="kg-axis" tickLine={true}  dataKey="kilogram" domain={[minKg - 1, maxKg + 2]}  />
                 
 
                 <Tooltip content={<BarTooltip />} cursor={{ fill: "#C4C4C4", fillOpacity: 0.5 }}/>
