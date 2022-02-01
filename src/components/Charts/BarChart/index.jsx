@@ -6,14 +6,24 @@ import '../../../utils/styles/Charts.css'
 
 export default function SimpleBarChart({data}) {
 
+    let KgArray=[]
+      data.activity.map((act) => {
+        KgArray.push(act.kilogram)
+        return KgArray
+      })
+
+      const maxKg = Math.max(...KgArray)
+      const minKg = Math.min(...KgArray)
+    
+    //console.log(activityObj)
     return(
         <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={data.activity} margin={{ top: 45, right: 30, left: 40, bottom: 10, }} >
                 <CartesianGrid strokeDasharray="2" />
 
                 <XAxis  tickFormatter={addBarAxis}  tickLine={false} tick={{fontSize: "14px"}} dy={5} />
-                <YAxis orientation='left' yAxisId="cal-axis" hide={true}  dataKey="calories" />
-                <YAxis orientation='right' tickCount={3} yAxisId="kg-axis" tickLine={true}  dataKey="kilogram"  />
+                <YAxis orientation='left' yAxisId="cal-axis" hide={true}  dataKey="calories"  />
+                <YAxis orientation='right' tickCount={3} yAxisId="kg-axis" tickLine={true}  dataKey="kilogram" domain={[minKg - 3, maxKg + 2]}  />
                 
 
                 <Tooltip content={<BarTooltip />} cursor={{ fill: "#C4C4C4", fillOpacity: 0.5 }}/>
