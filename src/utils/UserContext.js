@@ -15,13 +15,14 @@ export const UserProvider = ({ children }) => {
    */
   const switchToAPI12 = () => { setAPI(true); setMock(false) ; setId(12)}
   const switchToAPI18 = () => { setAPI(true); setMock(false) ; setId(18)}
-  const switchToMock = () => { setMock(true) ; setAPI(false)}
+  const handleSwitchToMock12 = () => { setMock(true) ; setAPI(false); setId(12)}
+  const handleSwitchToMock18 = () => { setMock(true) ; setAPI(false); setId(18)}
 
 
   const { Provider } = UserContext
 
   return (
-    <Provider value={{userId,  switchToMock, switchToAPI12, switchToAPI18, mockUsed, APIUsed}}>
+    <Provider value={{userId,  handleSwitchToMock12, handleSwitchToMock18, switchToAPI12, switchToAPI18, mockUsed, APIUsed}}>
       {children}
     </Provider>
   );

@@ -12,7 +12,8 @@ export default function Homepage() {
         /**
          * Functions to get context's data
          */
-        const handleSwitchToMock = () => { context.switchToMock()}
+        const handleSwitchToMock12 = () => { context.handleSwitchToMock12()}
+        const handleSwitchToMock18 = () => { context.handleSwitchToMock18()}
         const handleSwitchToAPI12 = ()=> { context.switchToAPI12()}
         const handleSwitchToAPI18 = ()=> { context.switchToAPI18()}
 
@@ -28,7 +29,10 @@ export default function Homepage() {
                     <button onClick={handleSwitchToAPI18}>Utiliser le profil de Cecilia Ratorez</button>
                 </Link>
                 <Link to='/dashboard'>
-                    <button onClick={handleSwitchToMock}>Utiliser les données mockées</button>
+                    <button onClick={handleSwitchToMock12}>Utiliser les données mockées de Karl Dovineau</button>
+                </Link>
+                <Link to='/dashboard'>
+                    <button onClick={handleSwitchToMock18}>Utiliser les données mockées de Cecilia Ratorez</button>
                 </Link>
             </div>
         )

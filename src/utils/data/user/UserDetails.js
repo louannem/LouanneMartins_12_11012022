@@ -3,7 +3,7 @@
  */
 class User {
     constructor(data) {
-        this.id = data.id
+        this.id = data.id || data.userId
         this.firstName = data.userInfos.firstName
         this.lastName = data.userInfos.lastName   
 

@@ -37,12 +37,24 @@ export default function Dashboard({secondTitle, userDetails, activity, performan
         activity = Service(context.userId, '/activity')
         performance = Service(context.userId, '/performance')
         averageSessions = Service(context.userId,'/average-sessions')
-    } else if (context.mockUsed) {
-        userDetails = { userData: new User(mockedUserData)}
-        activity = { userData: new UserActivity(mockedUserActivity)}
-        performance = { userData: new UserPerformance(mockedUserPerformance.data)}        
-        averageSessions = { userData: new UserSessions(mockedUserSessions)}
 
+    } else if (context.mockUsed) {
+
+        mockedUserData.map((user) => {  if(user.id === context.userId) { userDetails = { userData: new User(user)}     }
+            return userDetails
+        })
+
+        mockedUserPerformance.map(user => {  if(user.data.userId === context.userId) { performance = { userData: new UserPerformance(user.data)} }
+            return performance
+        })
+
+        mockedUserSessions.map(user => { if(user.userId === context.userId) { averageSessions = { userData: new UserSessions(user)} }
+        return averageSessions
+        } )
+
+        mockedUserActivity.map(user => { if(user.userId === context.userId) { activity = { userData: new UserActivity(user) }}
+        return activity
+        })
     }
     
     if(userDetails.hasError || performance.hasError || activity.hasError || averageSessions.hasError ) { 
@@ -50,7 +62,7 @@ export default function Dashboard({secondTitle, userDetails, activity, performan
     } else if (userDetails.isLoading || performance.isLoading || activity.isLoading || averageSessions.isLoading) {
         return <Loading />
     } else {
-       
+    
         const userData = userDetails.userData
         const userPerformance = performance.userData
         const userActivity = activity.userData
