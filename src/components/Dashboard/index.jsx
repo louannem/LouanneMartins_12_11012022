@@ -40,19 +40,19 @@ export default function Dashboard({secondTitle, userDetails, activity, performan
 
     } else if (context.mockUsed) {
 
-        mockedUserData.map((user) => {  user.id === context.userId && ( userDetails = { userData: new User(user)} )
+        mockedUserData.map((user) => {  user.id === context.userId && ( userDetails = { userData: new User(user), isLoading: false, hasError: false} )
             return userDetails
         })
 
-        mockedUserPerformance.map(user => {  user.data.userId === context.userId && (performance = { userData: new UserPerformance(user.data)} )
+        mockedUserPerformance.map(user => {  user.data.userId === context.userId && (performance = { userData: new UserPerformance(user.data), isLoading: false, hasError: false} )
             return performance
         })
 
-        mockedUserSessions.map(user => { user.userId === context.userId && (averageSessions = { userData: new UserSessions(user)})
+        mockedUserSessions.map(user => { user.userId === context.userId && (averageSessions = { userData: new UserSessions(user), isLoading: false, hasError: false})
         return averageSessions
         } )
 
-        mockedUserActivity.map(user => { user.userId === context.userId && ( activity = { userData: new UserActivity(user) })
+        mockedUserActivity.map(user => { user.userId === context.userId && ( activity = { userData: new UserActivity(user), isLoading: false, hasError: false })
         return activity
         })
     }
