@@ -6,26 +6,24 @@ import BikingLogo from "../../assets/sidebar/icon3.svg"
 import WeightIcon from "../../assets/sidebar/icon4.svg"
 import "../../utils/styles/Sidebar.css"
 
+const imgArray = [
+    MeditationLogo, 
+    SwimmingLogo, 
+    BikingLogo,
+    WeightIcon
+]
+
 export default function Sidebar({credits}){
     return(
         <div className="sidebar">
             <div className="icons-wrapper">
-                <div className="sidebar-icon">
-                    <img src={MeditationLogo} alt="" />
-                </div>
-
-                <div className="sidebar-icon">
-                    <img src={SwimmingLogo} alt="" />
-                </div>
-
-                <div className="sidebar-icon">
-                    <img src={BikingLogo} alt="" />
-                </div>
-
-                <div className="sidebar-icon">
-                    <img src={WeightIcon} alt="" />
-                </div>
+                {imgArray.map((img) => 
+                    <div className="sidebar-icon" key={img}>
+                        <img src={img} alt="" key={img} />
+                    </div>
+                )}
             </div>
+            
             <span>{credits}</span>
         </div>
     )
